@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20101117155227) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "intentions_count"
     t.string   "nickname"
     t.string   "image"
     t.string   "oauth_token"
     t.string   "oauth_secret"
-    t.integer  "intentions_count"
   end
 
 end
