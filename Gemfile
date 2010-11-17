@@ -15,6 +15,8 @@ gem 'mysql'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+gem 'hpricot'
+
 # To use debugger
 # gem 'ruby-debug'
 
