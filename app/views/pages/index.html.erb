@@ -10,8 +10,23 @@ Appointment to View
 			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
 			
 		<% end %>
-		
+
+		<% if logged_in? %>
+			<% intention = broadcast.intentions.find_by_user_id(current_user.id) %>
+
+			<% unless intention %>
+				<%= button_to "Watch", intentions_path(:broadcast_id => broadcast.id) %>
+			<% else %>
+				<%= button_to "Unwatch", intentions_path(intention), :method => :delete %>
+			<% end %>
+
+		<% else %>
+
 		<%= button_to "Watch", intentions_path(:broadcast_id => broadcast.id) %>
+
+		<% end %>
+
+
 
 	<% end %>
 <% end %>

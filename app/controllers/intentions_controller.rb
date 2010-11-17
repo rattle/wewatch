@@ -12,6 +12,19 @@ class IntentionsController < ApplicationController
       end
         
     end
+    
+    def destroy
+       
+       @intention = Intention.find(params[:id]) 
+       
+       if @intention.user = current_user
+          @intention.destroy
+          redirect_to root_path
+        else    
+           raise "Security VIOLOATION!" 
+        end           
+        
+    end
 
 
 end
