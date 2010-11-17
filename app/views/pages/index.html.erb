@@ -10,6 +10,8 @@ Appointment to View
 			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
 			
 		<% end %>
+		
+		<%= button_to "Watch", intentions_path(:broadcast_id => broadcast.id) %>
 
 	<% end %>
 <% end %>
