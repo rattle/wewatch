@@ -10,6 +10,7 @@ Rails.logger.info auth.inspect
     end
     # Log the authorizing user in.
     self.current_user = @auth.user
+    current_user.retrieve_friends
 
     render :text => "Welcome, #{current_user.name}."
   end
