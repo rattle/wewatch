@@ -7,7 +7,7 @@ Ruby on Rails Social TV Scheduler
 
 *Current status*
 
-Implementing core broadcast models
+Almost done!
 
 *Progress:*
 
