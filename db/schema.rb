@@ -10,8 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20101117132512) do
+ActiveRecord::Schema.define(:version => 20101117135434) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -50,17 +49,13 @@ ActiveRecord::Schema.define(:version => 20101117132512) do
   end
 
   create_table "users", :force => true do |t|
-      t.string   "name"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-      t.string   "nickname"
-      t.string   "image"
-      t.string   "oauth_token"
-      t.string   "oauth_secret"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "nickname"
+    t.string   "image"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
-
-  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
-  add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end

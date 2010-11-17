@@ -11,7 +11,7 @@ Appointment to View
 			
 		<% end %>
 
-		<% if logged_in? %>
+		<% if signed_in? %>
 			<% intention = broadcast.intentions.find_by_user_id(current_user.id) %>
 
 			<% unless intention %>

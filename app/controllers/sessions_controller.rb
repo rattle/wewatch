@@ -14,4 +14,5 @@ Rails.logger.info auth.inspect
     render :text => "Welcome, #{current_user.name}."
   end
 
+
 end
