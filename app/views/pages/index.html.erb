@@ -1,38 +1,14 @@
-Appointment to View
 
-<% if !signed_in?  %>
-	<p><a href="/auth/twitter">Sign In</a></p>
-<% else %>
-	<p><%= link_to "Sign Out", logout_path %></p>
-<% end  %>
+
+<section class="row programme-list">
+
 
 <h2>7PM</h2>
 
 <%= content_tag("ol") do %>
 	<% @broadcasts_7pm.each do |broadcast| %>
 
-		<%= content_tag("li") do %>
-			<%= broadcast.start.strftime("%H:%M")%>
-			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
-			
-		<% end %>
-
-		<% if signed_in? %>
-			<% intention = broadcast.intentions.find_by_user_id(current_user.id) %>
-
-			<% unless intention %>
-				<%= button_to "Watch", intentions_path(:broadcast_id => broadcast.id) %>
-			<% else %>
-				<%= button_to "Unwatch", intention_path(intention), :method => :delete %>
-			<% end %>
-
-		<% else %>
-
-		<%= button_to "Watch", intentions_path(:broadcast_id => broadcast.id) %>
-
-		<% end %>
-
-
+		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -42,9 +18,7 @@ Appointment to View
 <%= content_tag("ol") do %>
 	<% @broadcasts_8pm.each do |broadcast| %>
 
-		<%= content_tag("li") do %>
-			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
-		<% end %>
+		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -54,9 +28,7 @@ Appointment to View
 <%= content_tag("ol") do %>
 	<% @broadcasts_9pm.each do |broadcast| %>
 
-		<%= content_tag("li") do %>
-			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
-		<% end %>
+		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -67,9 +39,7 @@ Appointment to View
 <%= content_tag("ol") do %>
 	<% @broadcasts_10pm.each do |broadcast| %>
 
-		<%= content_tag("li") do %>
-			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
-		<% end %>
+		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -80,9 +50,7 @@ Appointment to View
 <%= content_tag("ol") do %>
 	<% @broadcasts_11pm.each do |broadcast| %>
 
-		<%= content_tag("li") do %>
-			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
-		<% end %>
+		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
