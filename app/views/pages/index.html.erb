@@ -13,7 +13,7 @@ Appointment to View
 
 		<%= content_tag("li") do %>
 			<%= broadcast.start.strftime("%H:%M")%>
-			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
+			<%= broadcast.title.html_safe %> 			<%= broadcast.channel.name %>  [<%= broadcast.intentions_count.to_i.to_s %>]
 			
 		<% end %>
 
