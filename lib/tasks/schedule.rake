@@ -5,7 +5,7 @@ require 'open-uri'
 namespace "schedules" do
 
   desc "Get today's schedule"
-  task :today do
+  task :today => :environment do
     
     puts "Getting today's schedule..."
     
