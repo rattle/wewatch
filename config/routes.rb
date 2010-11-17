@@ -3,6 +3,8 @@ Appointment::Application.routes.draw do
   get "pages/about"
   
   resources :intentions
+  
+  match 'logout', :to => 'sessions#destroy'
 
   match '/auth/:provider/callback', :to => 'sessions#create'
 

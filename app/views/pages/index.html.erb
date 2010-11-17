@@ -1,6 +1,10 @@
 Appointment to View
 
-<p><a href="/auth/twitter">Sign In</a></p>
+<% if !signed_in?  %>
+	<p><a href="/auth/twitter">Sign In</a></p>
+<% else %>
+	<p><%= link_to "Sign Out", logout_path %></p>
+<% end  %>
 
 <h2>7PM</h2>
 
