@@ -4,7 +4,8 @@ class IntentionsController < ApplicationController
 
     def create
       
-      @intention = Intention.new(params[:intention]) 
+      @intention = Intention.new
+      @intention.broadcast_id = params[:broadcast_id] 
       @intention.user = current_user
       
       if @intention.save

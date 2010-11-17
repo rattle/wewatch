@@ -19,7 +19,7 @@ Appointment to View
 			<% unless intention %>
 				<%= button_to "Watch", intentions_path(:broadcast_id => broadcast.id) %>
 			<% else %>
-				<%= button_to "Unwatch", intentions_path(intention), :method => :delete %>
+				<%= button_to "Unwatch", intention_path(intention), :method => :delete %>
 			<% end %>
 
 		<% else %>
