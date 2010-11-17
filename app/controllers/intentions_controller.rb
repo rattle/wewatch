@@ -1,0 +1,2 @@
+class IntentionsController < ApplicationController
+end
