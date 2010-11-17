@@ -1,12 +1,12 @@
 <%= content_tag("li", :class => :two) do %>
-	<%= content_tag("h3", @broadcast.title) %>
+	<%= content_tag("h3", broadcast.title.html_safe) %>
 	<%= content_tag("span", :class => :channel) do %>
-		<%= broadcast.channel.name %>
-		<%= content_tag("span", @broadcast.start.strftime('%H:%M'), :class => :time) %>
+		<%= broadcast.channel.name.html_safe %>
+		<%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %>
 	<% end %>
 	
-	<%= content_tag("span", @broadcast.short_synposis, :class => :description)%>
-	<%= content_tag("span", @broadcast.duration, :class => "prog-length") %>
+	<%= content_tag("span", broadcast.synopsis.html_safe, :class => :description)%>
+	<%= content_tag("span", broadcast.duration, :class => "prog-length") %>
 
 	<% if signed_in? %>
 		<%= content_tag("p", :class => :viewer_name) do %>
@@ -15,25 +15,25 @@
 	<% end %>
 		
 	<% if signed_in? %>
-		<% intention = @broadcast.intentions.find_by_user_id(current_user.id) %>
+		<% intention = broadcast.intentions.find_by_user_id(current_user.id) %>
 
 		<% unless intention %>
-			<%= link_to intentions_path(:broadcast_id => @broadcast.id, :class => "watch-toggle") do %>
-				<%= content_tag("span", @broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
+			<%= link_to intentions_path(:broadcast_id => broadcast.id, :class => "watch-toggle") do %>
+				<%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
 				Watch
 			<% end %>
 			
 		<% else %>
 			<%= link_to intention_path(intention), :method => :delete, :class => "watch-toggle watching" do %>
-				<%= content_tag("span", @broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
+				<%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
 				Unwatch
 			<% end %>
 		<% end %>
 
 	<% else %>
 
-		<%= link_to intentions_path(:broadcast_id => @broadcast.id), :class => "watch-toggle" do %>
-			<%= content_tag("span", @broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
+		<%= link_to intentions_path(:broadcast_id => broadcast.id), :class => "watch-toggle" do %>
+			<%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
 			Watch
 		<% end %>
 	

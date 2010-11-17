@@ -8,7 +8,7 @@
 <%= content_tag("ol") do %>
 	<% @broadcasts_7pm.each do |broadcast| %>
 
-		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
+		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -18,7 +18,7 @@
 <%= content_tag("ol") do %>
 	<% @broadcasts_8pm.each do |broadcast| %>
 
-		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
+		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -28,7 +28,7 @@
 <%= content_tag("ol") do %>
 	<% @broadcasts_9pm.each do |broadcast| %>
 
-		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
+		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -39,7 +39,7 @@
 <%= content_tag("ol") do %>
 	<% @broadcasts_10pm.each do |broadcast| %>
 
-		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
+		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
@@ -50,7 +50,7 @@
 <%= content_tag("ol") do %>
 	<% @broadcasts_11pm.each do |broadcast| %>
 
-		<%= render :partial => :broadcast, :local => {:broadcast => broadcast} %>
+		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 
 	<% end %>
 <% end %>
