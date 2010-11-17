@@ -2,9 +2,13 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :friends
 
-  validates_presence_of :id, :scope => :uid
-
   def self.create_from_hash!(hash)
+    
+    Rails.logger.info "name : #{hash['user_info']['name']}"
+    Rails.logger.info "nickname : #{hash['user_info']['nickname']}"
+    Rails.logger.info "image : #{hash['user_info']['image']}"
+    Rails.logger.info "oauth_token : #{hash['credentials']['token']}"
+    Rails.logger.info "oauth_secret : #{hash['credentials']['secret']}"
     create(:name => hash['user_info']['name'], :nickname => hash['user_info']['nickname'], :image => hash['user_info']['image'], :oauth_token => hash['credentials']['token'], :oauth_secret => hash['credentials']['secret'] )
   end
 
