@@ -37,11 +37,9 @@ namespace "schedules" do
               b.synopsis = broadcast.at('programme/short_synopsis').inner_html      
               b.link = BBC_URL + "/programmes/" + broadcast.at('programme/pid').inner_html
               
-                title = broadcast.at('programme/display_titles/title').inner_html
-                title += " - " + broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
-                
-              b.title = title
-
+              b.title = broadcast.at('programme/display_titles/title').inner_html
+              b.bsubtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
+  
               b.save
               
             end

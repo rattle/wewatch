@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117135434) do
+ActiveRecord::Schema.define(:version => 20101117154619) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20101117135434) do
     t.string   "title"
     t.integer  "channel_id"
     t.integer  "intentions_count"
+    t.string   "subtitle"
   end
 
   create_table "channels", :force => true do |t|
