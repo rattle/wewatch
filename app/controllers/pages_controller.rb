@@ -30,7 +30,6 @@ class PagesController < ApplicationController
 
       @broadcasts_11pm = Broadcast.all(:conditions => {:start => start_time..end_time, :is_repeat => false}, :order => "intentions_count DESC", :include => :channel)
 
-      
   end
 
   def about
