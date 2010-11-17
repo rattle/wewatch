@@ -2,9 +2,24 @@
 <html>
 <head>
   <title>Appointment</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+	<!-- Layout Grid -->
+	<link rel="stylesheet" href="stylesheets/layout.css" type="text/css" media="screen" />
+	
+	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+	<!--[if IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen" /><![endif]-->
+	
+	<link rel="stylesheet" href="stylesheets/smallerscreen.css" media="only screen and (max-width: 1023px)" />
+	<link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 767px)" />
+
+	<link rel="stylesheet" href="stylesheets/site.css" type="text/css" media="screen" />
+	<!-- /end stylesheets -->
+		
+	<%= javascript_include_tag "wewatch-ui", "jquery-1.3.2.min" %>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+
+	<%= csrf_meta_tag %>
+
 </head>
 <body class="home">	
 		
@@ -35,6 +50,31 @@
 			<hr>
 
 <%= yield %>
+
+	<footer class="vcard">
+		<p>Made by <a href="http://www.rattlecentral.com">Rattle.</a> <span>Follow <a href="#" class="twitter">rattlecentral</a> on twitter.</span></p>
+	</footer>
+	
+	
+	<div id="dialog" class="window">
+		<h4>You intend to watch <strong>Coast</strong> at <span class="time">9pm</span> on <span class="channel">BBC1</span></h4> 
+		
+		<ul>
+		<li><a href="#">Share on Twitter</a></li>
+		<li><a href="#">Bookmark in your calendar</a></li>
+		</ul>
+		
+		<p><a href="#" class="close">Close it</a></p>
+
+	</div>
+	
+	
+</section>
+<!-- /end main content -->
+
+<hr>
+
+
 
 </body>
 </html>

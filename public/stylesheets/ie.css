@@ -1,0 +1,29 @@
+/* -------------------------------------------------------------- 
+
+Appointment To View - 1.0 - 17/11/2010
+
+Title: IE Overide Stylesheet
+Author: andrew@rattlecentral.com
+
+-------------------------------------------------------------- */
+
+html {font-size:100.1% /*WinIE6- text resize adjust*/height: 100%;}
+body {font-size: 100%; height: 100%;}
+	
+/* reset the quote indentation */
+.dquo { margin-left: 0; } 
+.preamble, header, body.home .intro, .event, section, footer {zoom: 1;}
+
+
+/* adjust layout */
+.one {width: 4.7%;}
+.two {width: 13.2%;}
+.three {width: 22.05%;}
+.four {width: 30.6%;}
+.five {width: 39%;}
+.six {width: 48%;}
+.seven {width: 56.75%;}
+.eight {width: 61.6%;}
+.nine {width: 74.05%;}
+.ten {width: 82%;}
+.eleven {width: 91.35%;}
