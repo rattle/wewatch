@@ -1,2 +1,64 @@
-<h1><%= @title %></h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+Appointment to View
+
+<h2>7PM</h2>
+
+<%= content_tag("ol") do %>
+	<% @broadcasts_7pm.each do |broadcast| %>
+
+		<%= content_tag("li") do %>
+			<%= broadcast.start.strftime("%H:%M")%>
+			<%= broadcast.title %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
+		<% end %>
+
+	<% end %>
+<% end %>
+
+<h2>8PM</h2>
+
+<%= content_tag("ol") do %>
+	<% @broadcasts_8pm.each do |broadcast| %>
+
+		<%= content_tag("li") do %>
+			<%= broadcast.title %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
+		<% end %>
+
+	<% end %>
+<% end %>
+
+<h2>9PM</h2> 
+
+<%= content_tag("ol") do %>
+	<% @broadcasts_9pm.each do |broadcast| %>
+
+		<%= content_tag("li") do %>
+			<%= broadcast.title %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
+		<% end %>
+
+	<% end %>
+<% end %>
+
+
+<h2>10PM</h2>
+
+<%= content_tag("ol") do %>
+	<% @broadcasts_10pm.each do |broadcast| %>
+
+		<%= content_tag("li") do %>
+			<%= broadcast.title %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
+		<% end %>
+
+	<% end %>
+<% end %>
+
+
+<h2>11PM</h2>
+
+<%= content_tag("ol") do %>
+	<% @broadcasts_11pm.each do |broadcast| %>
+
+		<%= content_tag("li") do %>
+			<%= broadcast.title %> 			<%= broadcast.channel.name %>  <%= broadcast.intentions_count.to_i.to_s %>
+		<% end %>
+
+	<% end %>
+<% end %>
