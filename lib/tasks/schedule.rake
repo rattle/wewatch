@@ -13,12 +13,38 @@ namespace "schedules" do
     
     Channel.find_each do |channel|
 
-      # Construct url to XML of schedule
-      url = BBC_URL + "/" + channel.slug + "/programmes/schedules/"
-      url += channel.region + "/" if service.region
-      url += date.year.to_s + "/" + date.strftime("%m") + "/" + date.strftime("%d") + ".xml"
+      url = channel.xml_url
+      
+      begin
 
-      puts url
+        file = open(url)
+        doc = Hpricot.XML( file )
+        broadcasts = doc.search("//schedule/day/broadcasts/broadcast")
+      
+        if broadcasts.size > 0
+          
+          broadcasts.each do |broadcast|
+
+            b = Broadcast.find(:first, :conditions => {:channel_id => channel.id, :start => broadcast.at('start').inner_html, :end => broadcast.at('end').inner_html})
+
+            unless b
+              b = Broadcast.new
+              b.channel = channel
+              b.start = broadcast.at('start').inner_html
+              b.end =  broadcast.at('end').inner_html
+              b.is_repeat = broadcast['is_repeat']
+              b.duration =  broadcast.at('duration').inner_html      
+              
+                title = broadcast.at('programme/display_titles/title')
+                title += " - " + broadcast.at('programme/display_titles/subtitle') if broadcast.at('programme/display_titles/subtitle')
+                
+              b.title = title
+
+              b.save
+              
+            end
+          end
+        end
       
     end
   
