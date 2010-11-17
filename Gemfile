@@ -38,7 +38,5 @@ group :development, :test do
     gem 'factory_girl_rails'
     gem 'webrat'
     gem 'twitter'
-    gem 'oauth'
-    gem 'authlogic'
-    gem 'authlogic-oauth'
+    gem 'omniauth'
 end

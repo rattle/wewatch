@@ -3,6 +3,8 @@ Appointment::Application.routes.draw do
 
   get "pages/about"
 
+  match '/auth/:provider/callback', :to => 'sessions#create'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
