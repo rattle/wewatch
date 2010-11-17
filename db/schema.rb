@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117130204) do
+ActiveRecord::Schema.define(:version => 20101117132512) do
 
   create_table "broadcasts", :force => true do |t|
     t.datetime "start"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20101117130204) do
     t.integer  "duration"
     t.string   "title"
     t.integer  "channel_id"
+    t.integer  "intentions_count"
   end
 
   create_table "channels", :force => true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20101117130204) do
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
+    t.integer  "intentions_count"
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
