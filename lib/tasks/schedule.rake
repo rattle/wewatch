@@ -33,10 +33,12 @@ namespace "schedules" do
               b.start = broadcast.at('start').inner_html
               b.end =  broadcast.at('end').inner_html
               b.is_repeat = broadcast['is_repeat']
-              b.duration =  broadcast.at('duration').inner_html      
+              b.duration =  broadcast.at('duration').inner_html
+              b.synopsis = broadcast.at('programme/short_synopsis').inner_html      
+              b.link = BBC_URL + "/programmes/" + broadcast.at('programme/pid').inner_html
               
-                title = broadcast.at('programme/display_titles/title')
-                title += " - " + broadcast.at('programme/display_titles/subtitle') if broadcast.at('programme/display_titles/subtitle')
+                title = broadcast.at('programme/display_titles/title').inner_html
+                title += " - " + broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
                 
               b.title = title
 
@@ -47,6 +49,8 @@ namespace "schedules" do
         end
       
     end
+    
+end
   
     
 

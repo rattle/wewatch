@@ -3,9 +3,9 @@
 development:
   encoding: utf8
   adapter: mysql
-  database: appointmenttoview_development
+  database: rattle_appt2view_development
   username: root
-  password:
+  password: g01lum
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
