@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   def logged_in?
       current_user
   end
+  
+  def login_required
+      if logged_in? 
+      else
+          redirect_to "/auth/twitter/callback"
+      end
+  end
+  
 
   protected
   def current_user

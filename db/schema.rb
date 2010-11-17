@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20101117135434) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "intentions_count"
     t.string   "nickname"
     t.string   "image"
     t.string   "oauth_token"
