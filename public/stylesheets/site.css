@@ -267,6 +267,11 @@ input[type="search"] { -webkit-appearance: textfield; } */
 
 .window h4, .window ul {margin-bottom: 1em;}
 
+.window p {margin: 1em 0 0 0;}
+.window p a {margin-right: 1em;}
+
+.window textarea {font-size: 1em; font-family: Helvetica, sans-serif; padding: 4px; color: #999; margin: 1em 0 0.5em 0;}
+label {font-weight: bold;}
 
 
 /* Media Queries
