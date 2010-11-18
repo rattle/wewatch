@@ -47,3 +47,7 @@ Appointment::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+
+CONSUMER_KEY='8M87tYKRudLAwgMV4bC4A'
+CONSUMER_SECRET='GvJUM3tOuafIRie5AmigpX9g97o06n68k1CxUCc39kc'
+
