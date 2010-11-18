@@ -1,0 +1,6 @@
+$('#broadcast<%= @intention.broadcast_id %>').attr('href', '<%= intention_path(@intention)%>');
+$('#broadcast<%= @intention.broadcast_id %>').attr('data-method', 'delete');
+$('#broadcast<%= @intention.broadcast_id %> span.buttontext').text('Unwatch');
+$('#broadcast<%= @intention.broadcast_id %>').addClass('watching');
+$('#share-text').val("I'm watching <%= @intention.broadcast.title %> at <%= @intention.broadcast.start.strftime('%H:%M') %> on <%= @intention.broadcast.channel.name.html_safe %>.")
+$('#dialog').jqmShow();

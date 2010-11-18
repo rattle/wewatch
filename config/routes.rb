@@ -5,7 +5,7 @@ Appointment::Application.routes.draw do
   resources :intentions
   
   match 'logout', :to => 'sessions#destroy'
-
+  match 'tweet', :to => 'intentions#tweet'
   match '/auth/:provider/callback', :to => 'sessions#create'
 
   # The priority is based upon order of creation:

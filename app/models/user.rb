@@ -17,12 +17,10 @@ class User < ActiveRecord::Base
     client = Twitter::Base.new(oauth)
 
     begin
-    Rails.logger.error "Starting"
     cursor = -1
     while (cursor != 0) do
       twitter_friends = client.friends(:cursor => cursor)
       cursor = twitter_friends[:next_cursor]
-      Rails.logger.error "Cursor #{cursor}"
       twitter_friends.users.each do |friend|
         auth = { 'uid' => friend['id'], 'provider' => 'twitter',
                  'user_info' => { 'nickname' => friend['screen_name'], 'image' => friend['profile_image_url'], 'name' => friend['name']},
