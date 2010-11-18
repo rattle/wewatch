@@ -9,9 +9,7 @@
 	<%= content_tag("span", broadcast.duration, :class => "prog-length") %>
 
 	<% if signed_in? %>
-		<%= content_tag("p", :class => :viewer_name) do %>
-		<!--<strong>Watching</strong> <a href="#">username</a>, <a href="#">username</a>, <a href="#">username</a> and <a href="#">20 more</a>-->
-		<% end %>
+                <%= render :partial => 'watchers', :locals => { :user => current_user, :broadcast => broadcast } %>
 	<% end %>
 		
 	<% if signed_in? %>

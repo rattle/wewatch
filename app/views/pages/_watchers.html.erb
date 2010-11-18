@@ -1,0 +1,11 @@
+<% watchers =  broadcast.friends(user) %>
+
+<%= content_tag("p", :class => :viewer_name) do %>
+  <% unless watchers.length == 0 %>
+    <strong>Watching</strong> 
+    <%= watchers.map! { |k| link_to watcher.twitter.name, "http://twitter.com/#{watcher.twitter.name}" }.join(", ") %>
+    <% if watchers.length > 3 %>
+       and <a href="#">20 more</a>
+    <% end %>
+  <% end %>
+<% end %>
