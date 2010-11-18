@@ -16,6 +16,8 @@ gem 'mysql'
 # gem 'capistrano'
 
 gem 'hpricot'
+gem 'twitter'
+gem 'omniauth'
 
 # To use debugger
 # gem 'ruby-debug'
@@ -37,6 +39,4 @@ group :development, :test do
     gem 'cucumber-rails'
     gem 'factory_girl_rails'
     gem 'webrat'
-    gem 'twitter'
-    gem 'omniauth'
 end
