@@ -2,12 +2,12 @@
 
 <%= content_tag("p", :class => :viewer_name) do %>
   <% unless watchers.length == 0 %>
-    <strong>Watching</strong> 
-    <% links = watchers.map { |k| link_to watcher.twitter.name, "http://twitter.com/#{watcher.twitter.name}" } %>
-    <% links.slice!(0,3) %>
-    <%= links.join(", ") %>
+    <strong>Watching</strong>
+    <% links = watchers.map { |watcher| link_to(watcher.twitter.screen_name, "http://twitter.com/#{watcher.twitter.screen_name}") }.slice(0,2).join(", ") %>
+    <%= links.html_safe %>
     <% if watchers.length > 3 %>
        and <a href="#">20 more</a>
     <% end %>
   <% end %>
 <% end %>
+
