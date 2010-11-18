@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
   has_many :authorizations
   has_many :intentions
-  has_many :friends
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
 
   def self.create_from_hash!(hash)
     create(:name => hash['user_info']['name'])
@@ -13,7 +17,17 @@ class User < ActiveRecord::Base
     client = Twitter::Base.new(oauth)
 
     client.friends.each do |friend|
-      Friend.new(:user_id => self.id, :uid => friend['id'], :name => friend['name'], :screen_name => friend['screen_name']).save
+      auth = { 'uid' => friend['id'], 'provider' => 'twitter',
+               'user_info' => { 'nickname' => friend['screen_name'], 'image' => friend['profile_image_url'], 'name' => friend['name']},
+               'credentials' => { 'token' => '', 'secret' => ''}}
+      if @auth = Authorization.find_from_hash(auth)
+        @auth.update_from_hash(auth)
+      else
+        @auth = Authorization.create_from_hash(auth)
+      end
+
+      self.friends << @auth.user unless Friendship.find(:first, :conditions => {:friend_id => @auth.user.id, :user_id => self.id})
+
     end
   end
 

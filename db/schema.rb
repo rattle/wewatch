@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117212528) do
+ActiveRecord::Schema.define(:version => 20101118104852) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -46,11 +46,9 @@ ActiveRecord::Schema.define(:version => 20101117212528) do
     t.datetime "updated_at"
   end
 
-  create_table "friends", :force => true do |t|
+  create_table "friendships", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "uid"
-    t.string   "name"
-    t.string   "screen_name"
+    t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
