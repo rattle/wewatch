@@ -18,7 +18,7 @@
 		<% intention = broadcast.intentions.find_by_user_id(current_user.id) %>
 
 		<% unless intention %>
-			<%= link_to intentions_path(:broadcast_id => broadcast.id, :class => "watch-toggle") do %>
+			<%= link_to intentions_path(:broadcast_id => broadcast.id), :class => "watch-toggle", :method => :create do %>
 				<%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
 				Watch
 			<% end %>
@@ -32,7 +32,7 @@
 
 	<% else %>
 
-		<%= link_to intentions_path(:broadcast_id => broadcast.id), :class => "watch-toggle" do %>
+		<%= link_to intentions_path(:broadcast_id => broadcast.id), :method => "create", :class => "watch-toggle" do %>
 			<%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %>
 			Watch
 		<% end %>

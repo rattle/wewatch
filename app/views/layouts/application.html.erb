@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="stylesheets/site.css" type="text/css" media="screen" />
 	<!-- /end stylesheets -->
 		
-	<%= javascript_include_tag "wewatch-ui", "jquery-1.3.2.min" %>
+	<%= javascript_include_tag :defaults %>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
 
@@ -29,7 +29,7 @@
 				<h1>We Watch</h1>
 				<h2>Find out what your friends are watching tonight.</h2>
 				
-				<h3><%= Date.today.strftime("%e %B %Y") %><!-- <a href="#">Yesterday</a></h3>-->
+				<h3><%= Date.today.strftime("%e %B %Y") %></h3><!-- <a href="#">Yesterday</a> -->
 				
 				<!--
 				<form id="search">
