@@ -6,7 +6,7 @@
 	<% end %>
 	
 	<%= content_tag("span", broadcast.synopsis.html_safe, :class => :description)%>
-	<%= content_tag("span", broadcast.duration, :class => "prog-length") %>
+	<%= content_tag("span", hours_and_minutes(broadcast.duration), :class => "prog-length") %>
 
 	<% if signed_in? %>
                 <%= render :partial => 'watchers', :locals => { :user => current_user, :broadcast => broadcast } %>
