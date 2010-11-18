@@ -1,29 +1,38 @@
 class User < ActiveRecord::Base
   has_many :authorizations
-  has_many :friends
+  has_many :intentions
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
 
   def self.create_from_hash!(hash)
-    
-    Rails.logger.info "name : #{hash['user_info']['name']}"
-    Rails.logger.info "nickname : #{hash['user_info']['nickname']}"
-    Rails.logger.info "image : #{hash['user_info']['image']}"
-    Rails.logger.info "oauth_token : #{hash['credentials']['token']}"
-    Rails.logger.info "oauth_secret : #{hash['credentials']['secret']}"
-    create(:name => hash['user_info']['name'], :nickname => hash['user_info']['nickname'], :image => hash['user_info']['image'], :oauth_token => hash['credentials']['token'], :oauth_secret => hash['credentials']['secret'] )
+    create(:name => hash['user_info']['name'])
   end
 
-  def retrieve_friends
-
+  def retrieve_twitter_friends
     oauth = Twitter::OAuth.new(CONSUMER_KEY, CONSUMER_SECRET)
-    oauth.authorize_from_access(self.oauth_token, self.oauth_secret)
-    Rails.logger.info oauth.inspect
+    oauth.authorize_from_access(self.twitter.oauth_token, self.twitter.oauth_secret)
     client = Twitter::Base.new(oauth)
-    Rails.logger.info client.inspect
 
     client.friends.each do |friend|
-      Friend.new(:user_id => self.id, :uid => friend['id'], :name => friend['name'], :screen_name => friend['screen_name']).save
-      Rails.logger.info friend.inspect
+      auth = { 'uid' => friend['id'], 'provider' => 'twitter',
+               'user_info' => { 'nickname' => friend['screen_name'], 'image' => friend['profile_image_url'], 'name' => friend['name']},
+               'credentials' => { 'token' => '', 'secret' => ''}}
+      if @auth = Authorization.find_from_hash(auth)
+        @auth.update_from_hash(auth)
+      else
+        @auth = Authorization.create_from_hash(auth)
+      end
+
+      self.friends << @auth.user unless Friendship.find(:first, :conditions => {:friend_id => @auth.user.id, :user_id => self.id})
+
     end
+  end
+
+  def twitter
+    self.authorizations.find(:first, :conditions => { :provider => 'twitter' })
   end
 
 end

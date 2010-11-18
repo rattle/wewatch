@@ -9,7 +9,11 @@ class Authorization < ActiveRecord::Base
 
   def self.create_from_hash(hash, user = nil)
     user ||= User.create_from_hash!(hash)
-    Authorization.create(:user => user, :uid => hash['uid'], :provider => hash['provider'])
+    Authorization.create(:user => user, :uid => hash['uid'], :provider => hash['provider'], :screen_name => hash['user_info']['nickname'], :avatar => hash['user_info']['image'], :oauth_token => hash['credentials']['token'], :oauth_secret => hash['credentials']['secret'])
+  end
+
+  def update_from_hash(hash)
+    update_attributes(:uid => hash['uid'], :provider => hash['provider'], :screen_name => hash['user_info']['nickname'], :avatar => hash['user_info']['image'], :oauth_token => hash['credentials']['token'], :oauth_secret => hash['credentials']['secret'])
   end
 
 end

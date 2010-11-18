@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117155227) do
+ActiveRecord::Schema.define(:version => 20101118104852) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(:version => 20101117155227) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "screen_name"
+    t.string   "avatar"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
 
   create_table "broadcasts", :force => true do |t|
@@ -42,11 +46,9 @@ ActiveRecord::Schema.define(:version => 20101117155227) do
     t.datetime "updated_at"
   end
 
-  create_table "friends", :force => true do |t|
+  create_table "friendships", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "uid"
-    t.string   "name"
-    t.string   "screen_name"
+    t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,10 +65,6 @@ ActiveRecord::Schema.define(:version => 20101117155227) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "intentions_count"
-    t.string   "nickname"
-    t.string   "image"
-    t.string   "oauth_token"
-    t.string   "oauth_secret"
   end
 
 end

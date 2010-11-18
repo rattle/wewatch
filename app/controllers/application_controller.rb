@@ -2,14 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def logged_in?
-      current_user
+    current_user
   end
   
   def login_required
-      if logged_in? 
-      else
-          redirect_to "/auth/twitter/callback"
-      end
+    redirect_to "/auth/twitter" unless logged_in? 
   end
   
 
