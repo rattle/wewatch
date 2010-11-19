@@ -126,6 +126,7 @@ section.programme-list {position: relative; overflow: hidden; border-bottom: 1px
 .programme-list ol {overflow: visible;margin-bottom: 2em;}
 .programme-list ol li {position: relative; min-height: 200px;}
 .programme-list ol li.watching {}
+.programme-list ol li:nth-child(6n+6){margin: 0}
 
 .programme-list h3 {font-size: 1.143em;}
 
@@ -153,7 +154,7 @@ p.viewer-names strong {color: #777;}
 
 .programme-list ol li span.channel {display: block; font-weight: bold; margin-bottom: 0.5em;}
 span.description, span.prog-length {font-size: 0.857em; color: #999; display: block;}
-span.prog-length {margin-bottom: 0.5em;}
+span.prog-length {margin: 0.5em 0;}
 
 a.more-programmes {
 	position: absolute;
@@ -254,15 +255,17 @@ input[type="search"] { -webkit-appearance: textfield; } */
 ----------------------------------------------------------------*/
 
 .window {
-  position:absolute;
-  width: 380px;
-  display: none;
-  z-index: 9999;
-  padding: 20px;
-  background: #ffffec;
-  border: 2px solid #bbb;
-  -webkit-box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
-}
+	position:absolute;
+  	width: 380px;
+  	display: none;
+  	z-index: 9999;
+  	padding: 2em;
+  	background: #fff;
+  	border: 5px solid rgba(0,0,0,0.3);
+  	-moz-border-radius: 7px;
+  	-webkit-border-radius: 7px;
+  	-webkit-box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+	}
 
 
 .window h4, .window ul {margin-bottom: 1em;}
@@ -270,8 +273,10 @@ input[type="search"] { -webkit-appearance: textfield; } */
 .window p {margin: 1em 0 0 0;}
 .window p a {margin-right: 1em;}
 
-.window textarea {font-size: 1em; font-family: Helvetica, sans-serif; padding: 4px; color: #999; margin: 1em 0 0.5em 0;}
+.window textarea {font-size: 1em; font-family: Helvetica, sans-serif; padding: 4px; color: #999; margin: 1em 0 0.5em 0; width: 100%;}
 label {font-weight: bold;}
+input#share-send {margin-right: 1em; vertical-align: middle;}
+.window a {vertical-align: middle;}
 
 
 /* Media Queries
