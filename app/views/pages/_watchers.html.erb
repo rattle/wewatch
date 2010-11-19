@@ -1,6 +1,6 @@
 <% watchers =  broadcast.friends(user) %>
 
-<%= content_tag("p", :class => :viewer_name) do %>
+<%= content_tag("p", :class => 'viewer-name') do %>
   <% unless watchers.length == 0 %>
     <strong>Watching</strong>
     <% links = watchers.map { |watcher| link_to(watcher.twitter.screen_name, "http://twitter.com/#{watcher.twitter.screen_name}") }.slice(0,2).join(", ") %>

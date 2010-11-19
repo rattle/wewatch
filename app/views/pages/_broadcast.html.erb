@@ -20,7 +20,7 @@
 			<%= link_to intentions_path(:broadcast_id => broadcast.id), :class => "watch-toggle", :id => "broadcast#{broadcast.id}", :method => :post, :remote => true do %><%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
 			
 		<% else %>
-			<%= link_to intention_path(intention), :method => :delete, :class => "watch-toggle watching", :id => "broadcast#{broadcast.id}", :remote => true do %><%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Unwatch</span><% end %>
+			<%= link_to intention_path(intention), :method => :delete, :class => "watch-toggle watching", :id => "broadcast#{broadcast.id}", :remote => true do %><%= content_tag("span", broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
 		<% end %>
 
 	<% else %>
