@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Appointment</title>
+  <title>We Watch. Find out what your friends are watching tonight.</title>
 	<!-- Layout Grid -->
 	<link rel="stylesheet" href="stylesheets/layout.css" type="text/css" media="screen" />
 	
@@ -42,7 +42,7 @@
 				-->
 				
 				<% if !signed_in?  %>
-					<p><a href="/auth/twitter">Sign In</a></p>
+					<p><a href="/auth/twitter">Sign in with Twitter</a></p>
 				<% else %>
 					<p>Hello, <strong><%= current_user.twitter.screen_name %></strong>. <%= link_to "Sign Out", logout_path %></p>
 				<% end  %>
