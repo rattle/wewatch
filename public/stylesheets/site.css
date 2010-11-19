@@ -236,11 +236,31 @@ footer {
 	margin: 2em auto 4em auto;
 	overflow: hidden;
   	}
+  	
+  	
   
 footer h4 {font-weight: bold; }
 
 footer p {margin: 0; position: relative; font-size: 0.857em; }
 footer p span {position: absolute; right: 0;}
+
+
+/* Error message
+----------------------------------------------------------------*/
+
+.error {
+	padding: 1em;
+	background: #fdfde6;
+	position: relative; 
+	
+	width: 100%;
+	max-width: 1140px;
+	margin: 2em auto;
+	overflow: hidden;
+  	}
+  	
+.error p {margin: 0;}
+.error p span {color: #942525;}
 
 
 /* Forms
