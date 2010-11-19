@@ -5,7 +5,7 @@
 		<%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %>
 	<% end %>
 	
-	<%= content_tag("span", broadcast.synopsis.html_safe, :class => :description)%>
+	<%= content_tag("span", truncate(broadcast.synopsis.html_safe, :separator => ' ', :length => 90), :class => :description)%>
 	<%= content_tag("span", hours_and_minutes(broadcast.duration), :class => "prog-length") %>
 
 	<% if signed_in? %>
