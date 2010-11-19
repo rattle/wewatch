@@ -35,4 +35,13 @@ class IntentionsController < ApplicationController
       redirect_to root_path
     end
 
+    def watchers
+      @broadcast = Broadcast.find_by_id(params[:broadcast_id])
+      @total = @broadcast.intentions.count
+      @friends = @broadcast.friends(current_user)
+      respond_with(@friends, @broadcast, @total) do |format|
+        format.html { redirect_to root_path }
+      end
+    end
+
 end

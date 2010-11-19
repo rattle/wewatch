@@ -6,7 +6,7 @@
     <% links = watchers.map { |watcher| link_to(watcher.twitter.screen_name, "http://twitter.com/#{watcher.twitter.screen_name}") }.slice(0,2).join(", ") %>
     <%= links.html_safe %>
     <% if watchers.length > 3 %>
-       and <a href="#">20 more</a>
+       and <%= link_to "#{watchers.length} more", watchers_path(:broadcast_id => broadcast.id), :class => 'watchers', :remote => true %>
     <% end %>
   <% end %>
 <% end %>
