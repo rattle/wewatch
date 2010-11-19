@@ -32,7 +32,7 @@ gem 'omniauth'
 # and rake tasks are available in development mode:
 
 group :development, :test do
-    gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
+    gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
     gem 'rspec'
     gem 'rspec-rails'
     gem 'cucumber'
