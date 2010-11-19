@@ -26,8 +26,10 @@
 <body class="home">	
 		
 		<section class="container">
-			
-                        <%= show_flash %>
+
+                        <% if flash[:error] %>
+                          <div class="error"><p><strong>Sorry</strong>, <%= flash[:error] %></p></div>
+                        <% end %>
 		
 			<header role="banner" id="header">
 				<h1>We Watch</h1>

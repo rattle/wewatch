@@ -3,9 +3,10 @@ class IntentionsController < ApplicationController
     before_filter :login_required
 
     def create
-      @intention = Intention.new(:broadcast_id => params[:broadcast_id], :user => current_user)
+      @broadcast = Broadcast.find_by_id(params[:broadcast_id])
+      @intention = Intention.new(:broadcast_id => @broadcast.id, :user => current_user)
       if @intention.save
-        respond_with(@intention) do |format|
+        respond_with(@intention, @broadcast) do |format|
           format.html { redirect_to root_path }
         end
       else
@@ -16,6 +17,7 @@ class IntentionsController < ApplicationController
     
     def destroy
        @intention = current_user.intentions.find(params[:id]) 
+       @broadcast = @intention.broadcast
        if @intention.destroy
         respond_with(@intention) do |format|
           format.html { redirect_to root_path }

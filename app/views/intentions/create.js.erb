@@ -1,6 +1,3 @@
-$('#broadcast<%= @intention.broadcast_id %>').attr('href', '<%= intention_path(@intention)%>');
-$('#broadcast<%= @intention.broadcast_id %>').attr('data-method', 'delete');
-//$('#broadcast<%= @intention.broadcast_id %> span.buttontext').text('Watch');
-$('#broadcast<%= @intention.broadcast_id %>').addClass('watching');
-$('#share-text').val("I'm watching <%= @intention.broadcast.title %> at <%= @intention.broadcast.start.strftime('%H:%M') %> on <%= @intention.broadcast.channel.name.html_safe %>.")
+$('li#broadcast<%= @broadcast.id %>').replaceWith('<%= escape_javascript(render(:partial => "/pages/broadcast", :locals => {:broadcast => @broadcast})) %>');
+$('#share-text').val("I'm watching <%= @broadcast.title %> at <%= @broadcast.start.strftime('%H:%M') %> on <%= @broadcast.channel.name.html_safe %>.")
 $('#dialog').jqmShow();
