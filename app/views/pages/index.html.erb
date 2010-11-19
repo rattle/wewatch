@@ -1,70 +1,56 @@
 <hr/>
 
 <section class="row programme-list">
-
-
 <h2>7PM</h2>
-
-<%= content_tag("ol") do %>
+<%= content_tag("ol", :id => '7pm') do %>
+        <a class="buttons prev" href="#">left</a>
 	<% @broadcasts_7pm.each do |broadcast| %>
-
-
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
-
 	<% end %>
+        <a class="buttons next" href="#">right</a>
 <% end %>
-
 </section>
+
 <section class="row programme-list">
-	
 <h2>8PM</h2>
-
-<%= content_tag("ol") do %>
+<%= content_tag("ol", :id => '8pm') do %>
+        <a class="buttons prev" href="#">left</a>
 	<% @broadcasts_8pm.each do |broadcast| %>
-
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
 	<% end %>
+        <a class="buttons next" href="#">right</a>
 <% end %>
-
 </section>
-<section class="row programme-list">
 
+<section class="row programme-list">
 <h2>9PM</h2> 
-
-<%= content_tag("ol") do %>
+<%= content_tag("ol", :id => '9pm') do %>
+        <a class="buttons prev" href="#">left</a>
 	<% @broadcasts_9pm.each do |broadcast| %>
-
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
 	<% end %>
+        <a class="buttons next" href="#">right</a>
 <% end %>
-
 </section>
-<section class="row programme-list">
 
+<section class="row programme-list">
 <h2>10PM</h2>
-
-<%= content_tag("ol") do %>
+<%= content_tag("ol", :id => '10pm') do %>
+        <a class="buttons prev" href="#">left</a>
 	<% @broadcasts_10pm.each do |broadcast| %>
-
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
 	<% end %>
+        <a class="buttons next" href="#">right</a>
 <% end %>
-
 </section>
+
 <section class="row programme-list">
-
 <h2>11PM</h2>
-
-<%= content_tag("ol") do %>
+<%= content_tag("ol", :id => '11pm') do %>
+        <a class="buttons prev" href="#">left</a>
 	<% @broadcasts_11pm.each do |broadcast| %>
-
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
 	<% end %>
+        <a class="buttons next" href="#">right</a>
 <% end %>
-
 </section>
