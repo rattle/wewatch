@@ -124,7 +124,7 @@ header p {
 section.programme-list {position: relative; overflow: hidden; border-bottom: 1px solid #ccc; padding-bottom: 2em; margin-bottom: 2em; clear: both;}
 
 .programme-list ol {overflow: visible;margin-bottom: 2em;}
-.programme-list ol li {position: relative; min-height: 200px;}
+.programme-list ol li {position: relative; min-height: 220px;}
 .programme-list ol li.watching {}
 .programme-list ol li:nth-child(6n+6){margin: 0}
 
