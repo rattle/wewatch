@@ -2,55 +2,75 @@
 
 <section class="row programme-list">
 <h2>7PM</h2>
-<%= content_tag("ol", :id => '7pm') do %>
-        <a class="buttons prev" href="#">left</a>
+  <div class="carousel">
+    <% if @broadcasts_7pm.length > 6 %>
+      <button class="prev"><<</button>
+      <button class="next">>></button>
+    <% end %>
+    <%= content_tag("ol") do %>
 	<% @broadcasts_7pm.each do |broadcast| %>
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 	<% end %>
-        <a class="buttons next" href="#">right</a>
-<% end %>
+    <% end %>
+  </div>
 </section>
 
 <section class="row programme-list">
 <h2>8PM</h2>
-<%= content_tag("ol", :id => '8pm') do %>
-        <a class="buttons prev" href="#">left</a>
+  <div class="carousel">
+    <% if @broadcasts_8pm.length > 6 %>
+      <button class="prev"><<</button>
+      <button class="next">>></button>
+    <% end %>
+    <%= content_tag("ol") do %>
 	<% @broadcasts_8pm.each do |broadcast| %>
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 	<% end %>
-        <a class="buttons next" href="#">right</a>
-<% end %>
+    <% end %>
+  </div>
 </section>
 
 <section class="row programme-list">
 <h2>9PM</h2> 
-<%= content_tag("ol", :id => '9pm') do %>
-        <a class="buttons prev" href="#">left</a>
+  <div class="carousel">
+    <% if @broadcasts_9pm.length > 6 %>
+      <button class="prev"><<</button>
+      <button class="next">>></button>
+    <% end %>
+    <%= content_tag("ol") do %>
 	<% @broadcasts_9pm.each do |broadcast| %>
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 	<% end %>
-        <a class="buttons next" href="#">right</a>
-<% end %>
+    <% end %>
+  </div>
 </section>
 
 <section class="row programme-list">
 <h2>10PM</h2>
-<%= content_tag("ol", :id => '10pm') do %>
-        <a class="buttons prev" href="#">left</a>
+  <div class="carousel">
+    <% if @broadcasts_10pm.length > 6 %>
+      <button class="prev"><<</button>
+      <button class="next">>></button>
+    <% end %>
+    <%= content_tag("ol") do %>
 	<% @broadcasts_10pm.each do |broadcast| %>
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 	<% end %>
-        <a class="buttons next" href="#">right</a>
-<% end %>
+    <% end %>
+  </div>
 </section>
 
 <section class="row programme-list">
 <h2>11PM</h2>
-<%= content_tag("ol", :id => '11pm') do %>
-        <a class="buttons prev" href="#">left</a>
+  <div class="carousel">
+    <% if @broadcasts_11pm.length > 6 %>
+      <button class="prev"><<</button>
+      <button class="next">>></button>
+    <% end %>
+    <%= content_tag("ol") do %>
 	<% @broadcasts_11pm.each do |broadcast| %>
 		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
 	<% end %>
-        <a class="buttons next" href="#">right</a>
-<% end %>
+    <% end %>
+  </div>
 </section>
