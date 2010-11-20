@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
     rescue Twitter::RateLimitExceeded
       return false
     end
+    true
   end
 
   def twitter
