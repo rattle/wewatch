@@ -35,11 +35,7 @@ class User < ActiveRecord::Base
     rescue Twitter::RateLimitExceeded
       return false
     end
-<<<<<<< HEAD:app/models/user.rb
     true
-=======
-    return true
->>>>>>> carousel:app/models/user.rb
   end
 
   def twitter
