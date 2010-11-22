@@ -93,7 +93,6 @@ header {
 	padding-bottom: 2em;
 	
 	width: 100%;
-	max-width: 1140px;
 	margin: 4em auto 2em auto;
 	overflow: hidden;
 	}
@@ -126,7 +125,9 @@ section.programme-list {position: relative; overflow: hidden; border-bottom: 1px
 .programme-list ol {overflow: visible;margin-bottom: 2em;}
 .programme-list ol li {position: relative; min-height: 220px;}
 .programme-list ol li.watching {}
-.programme-list ol li:nth-child(6n+6){margin: 0}
+
+/* removing this as we now have the carousel
+ .programme-list ol li:nth-child(6n+6){margin: 0} */
 
 .programme-list h3 {font-size: 1.143em;}
 
@@ -152,23 +153,33 @@ section.programme-list {position: relative; overflow: hidden; border-bottom: 1px
 p.viewer-names {font-size: 0.857em; color: #999;}
 p.viewer-names strong {color: #777;}
 
+#watchers ul.viewer-names {font-size: 0.857em;}
+#watchers ul.viewer-names li {display: inline; margin-right: 4px;}
+
 .programme-list ol li span.channel {display: block; font-weight: bold; margin-bottom: 0.5em;}
 span.description, span.prog-length {font-size: 0.857em; color: #999; display: block;}
 span.prog-length {margin: 0.5em 0;}
 
-a.more-programmes {
+#watchers span.description, #watchers span.prog-length {font-size: 1em; margin: 0.5em 0;}
+
+a.jqmClose {display: block; border-top: 1px solid #ddd; padding: 1em 0 0 0;}
+
+p.more-programmes {
 	position: absolute;
 	display: block;
-	right: 0;
-	top: 0;
-	
+	right: 30px;
+	top: -55px;
+	}
+
+p.more-programmes a {
 	font-weight: bold;
 	font-size: 0.857em;
 	padding: 4px 12px;
 	background: #fff;
+	cursor: pointer;
 	}
-	
-a.more-programmes:hover {
+		
+p.more-programmes a:hover {
 	color: #777; 
 	text-decoration: none;
 	-moz-border-radius: 14px;
@@ -177,6 +188,9 @@ a.more-programmes:hover {
 	-moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.1) inset;*/
 	background: #eee;
 	}
+
+p.more-programmes a.disabled {color: #999; cursor: default; font-weight: normal;}
+p.more-programmes a.disabled:hover {background: #fff; color: #999; }
 
 
 
@@ -232,7 +246,6 @@ footer {
 	position: relative; 
 	
 	width: 100%;
-	max-width: 1140px;
 	margin: 2em auto 4em auto;
 	overflow: hidden;
   	}
@@ -332,6 +345,22 @@ input#share-send {margin-right: 1em; vertical-align: middle;}
 	
 /*iPad styles*/
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+	/* The 1146px Grid */
+
+	.container {
+		padding-left: 20px;
+		padding-right: 20px;
+		width: 960px;
+		margin: 0 auto;
+		}
+	
+	.row {
+		width: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		}
+	
 		
 	}
 	

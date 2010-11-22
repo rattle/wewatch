@@ -1,18 +1,17 @@
 <%= content_tag("h3", broadcast.title.html_safe) %>
-<%= content_tag("span", :class => :channel) do %>
-  <%= broadcast.channel.name.html_safe %>
-  <%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %>
+<p><%= content_tag("span", :class => :channel) do %>
+  <%= broadcast.channel.name.html_safe %> at <%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %></p>
 <% end %>
 
-<%= content_tag("span", broadcast.synopsis.html_safe, :class => :description)%>
-<%= content_tag("span", hours_and_minutes(broadcast.duration), :class => "prog-length") %>
+<p><%= content_tag("span", broadcast.synopsis.html_safe, :class => :description)%>
+<%= content_tag("span", hours_and_minutes(broadcast.duration), :class => "prog-length") %></p>
 
-<p>The following friends are watching this program:</p>
+<p class="viewer-names">There are <strong><%= total %> people</strong> watching this programme tonight including the following from your Twitter feed:</p>
 
-<ul>
+<ul class="viewer-names">
   <% friends.each do |friend| %>
     <li><a href="http://twitter.com/<%= friend.twitter.screen_name %>"><%= friend.twitter.screen_name %></a></li>
   <% end %>
 </ul>
 
-<p>There are <%= total %> people watching this tonight.</p>
+

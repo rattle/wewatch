@@ -14,7 +14,40 @@ figure{position:relative}
 figure img{width:100%}
 
 
-/* The 1140px Grid */
+/* The 1146px Grid */
+
+.container {
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 1146px;
+	margin: 0 auto;
+	}
+
+.row {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	}
+
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven {margin-right: 30px; float: left;}
+
+.one {width: 68px;}
+.two {width: 166px;}
+.three {width: 264px;}
+.four {width: 362px;}
+.five {width: 460px;}
+.six {width: 558px;}
+.seven {width: 656px;}
+.eight {width: 754px;}
+.nine {width: 852px;}
+.ten {width: 950px;}
+.eleven {width: 1048px;}
+.twelve {width: 100%; float: left;}
+
+
+
+
+/* The 1140px Grid 
 
 .container {
 	padding-left: 20px;
@@ -27,6 +60,8 @@ figure img{width:100%}
 	margin: 0 auto;
 	overflow: hidden;
 	}
+	
+
 
 .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven {margin-right: 3.8%; float: left;}
 
@@ -43,6 +78,7 @@ figure img{width:100%}
 .eleven {width: 91.35%;}
 .twelve {width: 100%; float: left;}
 
+*/
 .last {margin-right: 0px;}
 img, object, embed {max-width: 100%;}
 
