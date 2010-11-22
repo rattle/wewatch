@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
       (7..11).each do |hour|
         @broadcast_titles << "#{hour}PM"
-        @broadcasts << Broadcast.all(:conditions => ['start BETWEEN ? AND ? AND is_repeat = ? AND title NOT LIKE "%BBC%News%"', start_time, end_time, false], :order => "intentions_count DESC", :include => :channel)
+        @broadcasts << Broadcast.all(:conditions => ['start BETWEEN ? AND ? AND is_repeat = ? AND title NOT LIKE "%News%"', start_time, end_time, false], :order => "intentions_count DESC", :include => :channel)
         start_time += 1.hour
         end_time += 1.hour
       end

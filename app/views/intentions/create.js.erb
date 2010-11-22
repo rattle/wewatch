@@ -8,5 +8,5 @@ $('li#broadcast<%= @broadcast.id %>').css('float', 'left');
 $('li#broadcast<%= @broadcast.id %>').width(w);
 $('li#broadcast<%= @broadcast.id %>').height(h);
 
-$('#share-text').val("I'm watching <%= @broadcast.title %> at <%= @broadcast.start.strftime('%H:%M') %> on <%= @broadcast.channel.name.html_safe %>.")
+$('#share-text').val("I'm watching <%= @broadcast.title %> at <%= @broadcast.start.strftime('%I:%M%p') %> on <%= @broadcast.channel.name.html_safe %>.")
 $('#dialog').jqmShow();
