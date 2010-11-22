@@ -9,6 +9,14 @@ $(document).ready(function() {
      btnNext: ".next",
      btnPrev: ".prev"
   });
+  
+  	
+	// switch show and hide
+	$(".about").click(function(){
+		$("#about-text").slideToggle("slow");
+		$(this).toggleClass("active"); return false;
+	});
+	
 });
 
 
