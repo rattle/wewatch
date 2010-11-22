@@ -268,7 +268,6 @@ footer p span {position: absolute; right: 0;}
 	position: relative; 
 	
 	width: 100%;
-	max-width: 1140px;
 	margin: 2em auto;
 	overflow: hidden;
   	}
@@ -347,12 +346,12 @@ input#share-send {margin-right: 1em; vertical-align: middle;}
 /*iPad styles*/
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 
-	/* The 1146px Grid */
+	/* The 966px Grid */
 
 	.container {
 		padding-left: 20px;
 		padding-right: 20px;
-		width: 960px;
+		width: 966px;
 		margin: 0 auto;
 		}
 	
@@ -361,6 +360,21 @@ input#share-send {margin-right: 1em; vertical-align: middle;}
 		margin: 0 auto;
 		overflow: hidden;
 		}
+		
+	.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven {margin-right: 30px; float: left;}
+
+	.one {width: 53px;}
+	.two {width: 136px;}
+	.three {width: 219px;}
+	.four {width: 302px;}
+	.five {width: 385px;}
+	.six {width: 468px;}
+	.seven {width: 551px;}
+	.eight {width: 634px;}
+	.nine {width: 717px;}
+	.ten {width: 800px;}
+	.eleven {width: 883px;}
+	.twelve {width: 100%; float: left;}
 	
 		
 	}
