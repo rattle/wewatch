@@ -163,7 +163,7 @@ span.prog-length {margin: 0.5em 0;}
 #watchers span.description, #watchers span.prog-length {margin: 0.5em 0;}
 #watchers p {margin: 0 0 1em 0;}
 
-a.jqmClose {display: block; border-top: 1px solid #ddd; padding: 1em 0 0 0;}
+#watchers a.jqmClose {display: block; border-top: 1px solid #ddd; padding: 1em 0 0 0;}
 
 p.more-programmes {
 	position: absolute;
