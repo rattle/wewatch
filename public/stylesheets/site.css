@@ -155,7 +155,7 @@ p.viewer-names strong {color: #777;}
 
 /* about text and link - show and hide */
 p#about-text {display: none; padding-bottom: 2em; border-bottom: 1px solid #ccc;}
-a.about {position: absolute; top: 1em;}
+a.about {margin: 2em 0 0 0; display: block;}
 
 #watchers ul.viewer-names, a.about {font-size: 0.857em;}
 #watchers ul.viewer-names li {display: inline; margin-right: 4px;}
