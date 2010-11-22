@@ -2,11 +2,17 @@
 <hr/>
 <section class="row programme-list">
   <h2><%= @broadcast_titles[index] %></h2>
-
+  <div class="carousel">
+  <% if @broadcasts_7pm.length > 6 %>
+    <p class="more-programmes">
+    <a class="prev">Previous</a> <a class="next">Next</a>
+    </p>
+  <% end %>
   <%= content_tag("ol") do %>
     <% broadcasts.each do |broadcast| %>
       <%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
     <% end %>
   <% end %>
+  </div>
 </section>
 <% end %>
