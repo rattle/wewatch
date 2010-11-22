@@ -2,3 +2,33 @@ body {
 font-size: 0.8em; /* Makes type a bit smaller at 1024 so layout doesn't look unbalanced */
 line-height: 1.5em;	/* As above */
 }
+
+/* The 966px Grid */
+
+	.container {
+		padding-left: 20px;
+		padding-right: 20px;
+		width: 966px;
+		margin: 0 auto;
+		}
+	
+	.row {
+		width: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		}
+		
+	.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven {margin-right: 30px; float: left;}
+
+	.one {width: 53px;}
+	.two {width: 100px;}
+	.three {width: 219px;}
+	.four {width: 302px;}
+	.five {width: 385px;}
+	.six {width: 468px;}
+	.seven {width: 551px;}
+	.eight {width: 634px;}
+	.nine {width: 717px;}
+	.ten {width: 800px;}
+	.eleven {width: 883px;}
+	.twelve {width: 100%; float: left;}

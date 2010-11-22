@@ -12,9 +12,8 @@ class Broadcast < ActiveRecord::Base
 
    def friends(user)
      users = []
-     user.friends.each do |friend|
-       users << friend if friend.intentions.count(:conditions => ['user_id = ? AND broadcast_id = ?', friend.id, self.id]) > 0
-     end
+     in_sql = user.friends.collect { |f| f.id }.join(',')
+     users << friend if self.intentions.count(:conditions => ['user_id IN (?) AND broadcast_id = ?', in_sql, self.id])>0
      users
    end
 
