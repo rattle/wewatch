@@ -5,8 +5,8 @@
 	<!-- Layout Grid -->
 	<link rel="stylesheet" href="stylesheets/layout.css" type="text/css" media="screen" />
 	
-	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
-	<!--[if IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen" /><![endif]-->
+	<!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
+	<!--[if IE 6]><link rel="stylesheet" href="stylesheets/ie6.css" type="text/css" media="screen" /><![endif]-->
 	
 	<link rel="stylesheet" href="stylesheets/smallerscreen.css" media="only screen and (max-width: 1023px)" />
 	<link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 767px)" />
@@ -18,6 +18,8 @@
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag 'jqModal.js' %>
 	<%= javascript_include_tag 'jcarousellite.js' %>
+	
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
 
