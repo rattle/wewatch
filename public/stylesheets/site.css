@@ -160,7 +160,8 @@ p.viewer-names strong {color: #777;}
 span.description, span.prog-length {font-size: 0.857em; color: #999; display: block;}
 span.prog-length {margin: 0.5em 0;}
 
-#watchers span.description, #watchers span.prog-length {font-size: 1em; margin: 0.5em 0;}
+#watchers span.description, #watchers span.prog-length {margin: 0.5em 0;}
+#watchers p {margin: 0 0 1em 0;}
 
 a.jqmClose {display: block; border-top: 1px solid #ddd; padding: 1em 0 0 0;}
 
