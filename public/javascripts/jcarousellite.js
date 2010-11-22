@@ -148,10 +148,8 @@ $.fn.jCarouselLite = function(options) {
           }
         // If non-circular and to points beyond first or last, we change to first or last.
         } else {
-          // Disable buttons when the carousel reaches the last/first, and enable when not
-          o.$btnPrev.toggleClass(o.btnDisabledClass, o.btnPrev && to <= 0);
-          o.$btnNext.toggleClass(o.btnDisabledClass, o.btnNext && to > itemLength-v);
 
+          div.find( o['btnNext'] ).toggleClass(o.btnDisabledClass, o.btnNext && to >= itemLength-v);
           if (to<0) {
             curr = 0;
           } else if  (to>itemLength-v) {
@@ -159,6 +157,7 @@ $.fn.jCarouselLite = function(options) {
           } else {
             curr = to;
           }
+          div.find( o['btnPrev'] ).toggleClass(o.btnDisabledClass, o.btnPrev && to <= 0);
         }
 
         running = true;
