@@ -13,7 +13,10 @@ class Authorization < ActiveRecord::Base
   end
 
   def update_from_hash(hash)
-    update_attributes(:uid => hash['uid'], :provider => hash['provider'], :screen_name => hash['user_info']['nickname'], :avatar => hash['user_info']['image'], :oauth_token => hash['credentials']['token'], :oauth_secret => hash['credentials']['secret'])
+    h = { :uid => hash['uid'], :provider => hash['provider'], :screen_name => hash['user_info']['nickname'], :avatar => hash['user_info']['image'] }
+    # if we're updating an existing user from a friend, then we don't want to blank the oauth details
+    h.merge!(:oauth_token => hash['credentials']['token'], :oauth_secret => hash['credentials']['secret']) unless hash['credentials']['token'].blank?
+    update_attributes(h)
   end
 
 end
