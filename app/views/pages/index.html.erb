@@ -1,70 +1,18 @@
+<% @broadcasts.each_with_index do |broadcasts, index| %>
 <hr/>
-
 <section class="row programme-list">
-
-
-<h2>7PM</h2>
-
-<%= content_tag("ol") do %>
-	<% @broadcasts_7pm.each do |broadcast| %>
-
-
-		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
-
-	<% end %>
-<% end %>
-
+  <h2><%= @broadcast_titles[index] %></h2>
+  <div class="carousel">
+  <% if broadcasts.length > 6 %>
+    <p class="more-programmes">
+    <a class="prev">Previous</a> <a class="next">Next</a>
+    </p>
+  <% end %>
+  <%= content_tag("ol") do %>
+    <% broadcasts.each do |broadcast| %>
+      <%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
+    <% end %>
+  <% end %>
+  </div>
 </section>
-<section class="row programme-list">
-	
-<h2>8PM</h2>
-
-<%= content_tag("ol") do %>
-	<% @broadcasts_8pm.each do |broadcast| %>
-
-		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
-	<% end %>
 <% end %>
-
-</section>
-<section class="row programme-list">
-
-<h2>9PM</h2> 
-
-<%= content_tag("ol") do %>
-	<% @broadcasts_9pm.each do |broadcast| %>
-
-		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
-	<% end %>
-<% end %>
-
-</section>
-<section class="row programme-list">
-
-<h2>10PM</h2>
-
-<%= content_tag("ol") do %>
-	<% @broadcasts_10pm.each do |broadcast| %>
-
-		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
-	<% end %>
-<% end %>
-
-</section>
-<section class="row programme-list">
-
-<h2>11PM</h2>
-
-<%= content_tag("ol") do %>
-	<% @broadcasts_11pm.each do |broadcast| %>
-
-		<%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-
-	<% end %>
-<% end %>
-
-</section>

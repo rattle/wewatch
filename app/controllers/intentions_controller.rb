@@ -3,9 +3,10 @@ class IntentionsController < ApplicationController
     before_filter :login_required
 
     def create
-      @intention = Intention.new(:broadcast_id => params[:broadcast_id], :user => current_user)
+      @broadcast = Broadcast.find_by_id(params[:broadcast_id])
+      @intention = Intention.new(:broadcast_id => @broadcast.id, :user => current_user)
       if @intention.save
-        respond_with(@intention) do |format|
+        respond_with(@intention, @broadcast) do |format|
           format.html { redirect_to root_path }
         end
       else
@@ -16,6 +17,7 @@ class IntentionsController < ApplicationController
     
     def destroy
        @intention = current_user.intentions.find(params[:id]) 
+       @broadcast = @intention.broadcast
        if @intention.destroy
         respond_with(@intention) do |format|
           format.html { redirect_to root_path }
@@ -30,9 +32,18 @@ class IntentionsController < ApplicationController
       oauth = Twitter::OAuth.new(CONSUMER_KEY, CONSUMER_SECRET)
       oauth.authorize_from_access(current_user.twitter.oauth_token, current_user.twitter.oauth_secret)
       client = Twitter::Base.new(oauth)
-      #client.update(params[:share]) unless params[:share].blank?
-      Rails.logger.info params[:share]
+      client.update(params[:share]) unless params[:share].blank?
+      #Rails.logger.info params[:share]
       redirect_to root_path
+    end
+
+    def watchers
+      @broadcast = Broadcast.find_by_id(params[:broadcast_id])
+      @total = @broadcast.intentions.count
+      @friends = @broadcast.friends(current_user)
+      respond_with(@friends, @broadcast, @total) do |format|
+        format.html { redirect_to root_path }
+      end
     end
 
 end

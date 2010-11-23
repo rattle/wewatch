@@ -1,0 +1,3 @@
+$('#watchers').html('<%= escape_javascript(render(:partial => "watchers", :locals => {:total => @total, :friends => @friends, :broadcast => @broadcast})) %>');
+$('#watchers').append('<p><a href="#" class="jqmClose">Close</a></p>');
+$('#watchers').jqmShow();

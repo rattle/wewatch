@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
-
   def self.create_from_hash!(hash)
     create(:name => hash['user_info']['name'])
   end
@@ -36,6 +35,7 @@ class User < ActiveRecord::Base
     rescue Twitter::RateLimitExceeded
       return false
     end
+    true
   end
 
   def twitter
