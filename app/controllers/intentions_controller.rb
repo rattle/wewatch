@@ -29,11 +29,15 @@ class IntentionsController < ApplicationController
     end
 
     def tweet
+      begin
       oauth = Twitter::OAuth.new(CONSUMER_KEY, CONSUMER_SECRET)
       oauth.authorize_from_access(current_user.twitter.oauth_token, current_user.twitter.oauth_secret)
       client = Twitter::Base.new(oauth)
       client.update(params[:share]) unless params[:share].blank?
       #Rails.logger.info params[:share]
+      rescue 
+        flash[:error] = "Failed to add your update to twitter."
+      end
       redirect_to root_path
     end
 
