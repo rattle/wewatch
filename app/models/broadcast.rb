@@ -9,6 +9,7 @@ class Broadcast < ActiveRecord::Base
 
    def friends(user)
      in_sql = user.friends.collect { |f| f.id }.join(',')
+     return [] if in_sql.blank?
      User.find(:all, :include => :intentions, :conditions => ["intentions.user_id IN (#{in_sql}) AND intentions.broadcast_id = ?", self.id])
    end
 
