@@ -6,9 +6,9 @@ class PagesController < ApplicationController
       @broadcasts = []
       @broadcast_titles = []
       
-      today = Date.today
-      start_time = DateTime.parse(today.strftime("%Y-%m-%d") + "T19:00:00")
-      end_time = DateTime.parse(today.strftime("%Y-%m-%d") + "T19:59:59")
+      @today = params.has_key?(:date) ? Date.parse(params[:date]) : Date.today
+      start_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T19:00:00")
+      end_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T19:59:59")
 
       (7..11).each do |hour|
         @broadcast_titles << "#{hour}PM"

@@ -41,7 +41,7 @@
 				<h1>We Watch</h1>
 				<h2>What your friends' are watching on TV tonight.</h2>
 				
-				<h3><%= Date.today.strftime("%e %B %Y") %></h3><!-- <a href="#">Yesterday</a> -->
+				<h3><%= @today.strftime("%e %B %Y") %></h3> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) %>
 				
 				<!--
 				<form id="search">
