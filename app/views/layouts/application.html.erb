@@ -38,7 +38,7 @@
             <p id="about-text">The TV schedule is still important in determining what we watch. Key to this is a sense of watching something on its first transmission "first time to see TV", so you can talk about it with friends and colleagues. This is a proof-of-concept service that shows original programmes on BBC tonight (we can't get the other channels yet because of rights issues) and lets people share their TV plans. We'd love to improve it so please tell us how through Twitter <a href="http://www.twitter.com/we_watch">@we_watch</a></p>
 		
 			<header role="banner" id="header">
-				<h1>We Watch</h1>
+				<h1><a href="/">We Watch</a></h1>
 				<h2>What your friends' are watching on TV tonight.</h2>
 				
 				<h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) %></h3>

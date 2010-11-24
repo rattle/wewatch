@@ -99,6 +99,8 @@ header {
 
 
 header h1 {font-size: 3em;}
+header h1 a {color: #000; display: block; padding: 10px 0 5px 90px; background: url(../images/we-watch-icon.png) no-repeat 0 20%; }
+header h1 a:hover {color: #2396dc; text-decoration: none; }
 	
 
 header h2 {font-size: 1em; color: #777; font-weight: normal;}
