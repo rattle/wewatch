@@ -11,8 +11,12 @@ class SessionsController < ApplicationController
     # Log the authorizing user in
     self.current_user = @auth.user
 
-    @processing = true
-    render :template => '/pages/processing'
+    if Friendships.count(:conditions => {:user => current_user}) > 0
+      redirect_to root_path
+    else
+      @processing = true
+      render :template => '/pages/processing'
+    end
   end
 
 
