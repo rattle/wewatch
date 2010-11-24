@@ -9,6 +9,8 @@ Appointment::Application.routes.draw do
   match 'watchers', :to => 'intentions#watchers'
   match '/auth/:provider/callback', :to => 'sessions#create'
 
+  match '/auth/failure', :to => 'pages#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
