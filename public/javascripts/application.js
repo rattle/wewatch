@@ -10,12 +10,15 @@ $(document).ready(function() {
      btnPrev: ".prev"
   });
   
-  	
-	// switch show and hide
-	$(".about").click(function(){
-		$("#about-text").slideToggle("slow");
-		$(this).toggleClass("active"); return false;
-	});
+  $(".about").click(function(){
+    $("#about-text").slideToggle("slow");
+    $(this).toggleClass("active"); return false;
+  });
+
+  if ( $("#redirect").length ) {
+    $("#redirect .link").hide();
+    window.location.href = '/processing';
+  }
 	
 });
 

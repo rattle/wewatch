@@ -1,12 +1,13 @@
 class PagesController < ApplicationController
 
+  before_filter :login_required, :only => [:processing]
+
   def index
       @title = "Home"
 
       @broadcasts = []
       @broadcast_titles = []
       
-      @today = params.has_key?(:date) ? Date.parse(params[:date]) : Date.today
       start_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T19:00:00")
       end_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T19:59:59")
 
@@ -21,9 +22,8 @@ class PagesController < ApplicationController
   end
 
   def processing
-      @title = "Processing"
-      flash[:error] = 'Failed to retrieve your friends' unless current_user.retrieve_twitter_friends
-      redirect_to root_path
+    flash[:error] = 'Failed to retrieve your friends' unless current_user.retrieve_twitter_friends
+    redirect_to root_path
   end
 
   def about
