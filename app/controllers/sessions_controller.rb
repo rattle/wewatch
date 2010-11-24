@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     # Log the authorizing user in
     self.current_user = @auth.user
 
-    if Friendship.count(:conditions => {:user => current_user}) > 0
+    if Friendship.count(:conditions => {:user_id => current_user.id}) > 0
       redirect_to root_path
     else
       @processing = true
