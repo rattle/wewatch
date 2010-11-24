@@ -20,6 +20,12 @@ class PagesController < ApplicationController
 
   end
 
+  def processing
+      @title = "Processing"
+      flash[:error] = 'Failed to retrieve your friends' unless current_user.retrieve_twitter_friends
+      redirect_to root_path
+  end
+
   def about
       @title = "About"
   end

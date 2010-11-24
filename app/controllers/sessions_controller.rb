@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     end
     # Log the authorizing user in
     self.current_user = @auth.user
-    flash[:error] = 'Failed to retrieve your friends' unless current_user.retrieve_twitter_friends
 
     redirect_to root_path
   end

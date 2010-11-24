@@ -7,8 +7,8 @@ Appointment::Application.routes.draw do
   match 'logout', :to => 'sessions#destroy'
   match 'tweet', :to => 'intentions#tweet'
   match 'watchers', :to => 'intentions#watchers'
+  match 'processing', :to => 'pages#processing'
   match '/auth/:provider/callback', :to => 'sessions#create'
-
   match '/auth/failure', :to => 'pages#index'
 
   # The priority is based upon order of creation:
