@@ -1,12 +1,10 @@
 // These are set to match the carousel added properties
 w = $('li#broadcast<%= @broadcast.id %>').width();
-h = $('li#broadcast<%= @broadcast.id %>').height();
 
 $('li#broadcast<%= @broadcast.id %>').replaceWith('<%= escape_javascript(render(:partial => "/pages/broadcast", :locals => {:broadcast => @broadcast})) %>');
 $('li#broadcast<%= @broadcast.id %>').css('overflow', 'visible');
 $('li#broadcast<%= @broadcast.id %>').css('float', 'left');
 $('li#broadcast<%= @broadcast.id %>').width(w);
-$('li#broadcast<%= @broadcast.id %>').height(h);
 
 $('#share-text').val("I'm watching \"<%= CGI.unescapeHTML(@broadcast.title) %>\" at <%= @broadcast.start.strftime('%I:%M%p') %> on <%= @broadcast.channel.name.html_safe %>. Find out what people are watching tonight on http://wewatch.co.uk")
 $('#dialog').jqmShow();

@@ -98,8 +98,8 @@ header {
 	}
 
 
-header h1 {font-size: 3em;}
-header h1 a {color: #000; display: inline-block; padding: 10px 0 5px 90px; background: url(../images/we-watch-icon.png) no-repeat 0 20%; }
+header h1 {font-size: 3em; background: url(../images/we-watch-icon.png) no-repeat 0 20%; }
+header h1 a {color: #000; display: inline-block; padding: 10px 40px 5px 85px; background: url(../images/beta.png) no-repeat 100% 45%; }
 header h1 a:hover {color: #2396dc; text-decoration: none; }
 	
 
@@ -124,8 +124,8 @@ header p {
 
 section.programme-list {position: relative; overflow: hidden; border-bottom: 1px solid #ccc; padding-bottom: 2em; margin-bottom: 2em; clear: both;}
 
-.programme-list ol {overflow: visible;margin-bottom: 2em;}
-.programme-list ol li {position: relative; min-height: 220px;}
+.programme-list ol {overflow: visible; margin-bottom: 2em;}
+.programme-list ol li {position: relative;}
 .programme-list ol li.watching {}
 
 /* removing this as we now have the carousel
@@ -208,10 +208,10 @@ a.watch-toggle {
 	font-weight: bold;
 	background: #1f85c3;
 	padding: 5px 32px 5px 16px;
-	position: absolute;
 	overflow: visible;
-	margin-left: 28px;
-	bottom: 0;
+	margin: 0.5em 0 0 28px;
+	position: relative;
+	display: inline-block;
 	
 	-webkit-border-bottom-right-radius: 14px;
 	-webkit-border-top-right-radius: 14px;
