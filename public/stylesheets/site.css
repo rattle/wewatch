@@ -133,6 +133,16 @@ section.programme-list {position: relative; overflow: hidden; border-bottom: 1px
 
 .programme-list h3 {font-size: 1.143em;}
 
+.programme-list h3 a {
+	color:#000; 
+	color: rgba(0,0,0,0.8);
+	text-decoration: none;	
+	}
+
+.programme-list h3 a:hover {
+	color: #2396dc;
+	}
+
 .programme-list ol li a.viewer-total {
 	position: absolute;
 	color: #3b570a;
