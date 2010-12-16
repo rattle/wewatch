@@ -1,19 +1,22 @@
 
+
 <% @broadcasts.each_with_index do |broadcasts, index| %>
-<hr/>
-<section class="row programme-list">
-  <h2><%= @broadcast_titles[index] %></h2>
-  <div class="carousel">
-  <% if broadcasts.length > 6 %>
-    <p class="more-programmes">
-    <a class="prev">Previous</a> <a class="next">Next</a>
-    </p>
-  <% end %>
-  <%= content_tag("ol") do %>
-    <% broadcasts.each do |broadcast| %>
-      <%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
-    <% end %>
-  <% end %>
-  </div>
-</section>
+	<% if broadcasts.size > 0 %>
+	<hr/>
+	<section class="row programme-list">
+	  <h2><%= @broadcast_titles[index] %></h2>
+	  <div class="carousel">
+	  <% if broadcasts.length > 6 %>
+	    <p class="more-programmes">
+	    <a class="prev">Previous</a> <a class="next">Next</a>
+	    </p>
+	  <% end %>
+	  <%= content_tag("ol") do %>
+	    <% broadcasts.each do |broadcast| %>
+	      <%= render :partial => "broadcast", :locals => {:broadcast => broadcast} %>
+	    <% end %>
+	  <% end %>
+	  </div>
+	</section>
+	<% end %>
 <% end %>
