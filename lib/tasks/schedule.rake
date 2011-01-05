@@ -24,14 +24,17 @@ namespace "schedules" do
         if broadcasts.size > 0
           
           broadcasts.each do |broadcast|
+            
+            starttime = DateTime.parse(broadcast.at('start').inner_html)
+            endtime = DateTime.parse(broadcast.at('end').inner_html)
 
-            b = Broadcast.find(:first, :conditions => {:channel_id => channel.id, :start => broadcast.at('start').inner_html, :end => broadcast.at('end').inner_html})
+            b = Broadcast.find_by_channel_id_and_start_and_end(channel.id, starttime, endtime)
 
             unless b
               b = Broadcast.new
               b.channel = channel
-              b.start = broadcast.at('start').inner_html
-              b.end =  broadcast.at('end').inner_html
+              b.start = starttime
+              b.end =  endtime
               b.is_repeat = broadcast['is_repeat']
               b.duration =  broadcast.at('duration').inner_html
               b.synopsis = broadcast.at('programme/short_synopsis').inner_html      
