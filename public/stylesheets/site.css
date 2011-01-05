@@ -173,9 +173,11 @@ a.about {margin: 2em 0 0 0; display: block;}
 #watchers ul.viewer-names li {display: inline; margin-right: 4px;}
 
 
-.programme-list ol li span.channel {display: block; font-weight: bold; margin-bottom: 0.5em;}
+.programme-list ol li span.channel {display: block; font-weight: bold; margin-bottom: 0.5em; margin-top: 0.25em;}
 span.description, span.prog-length {font-size: 0.857em; color: #999; display: block;}
 span.prog-length {margin: 0.5em 0;}
+
+span.channel img {vertical-align: text-top; display: inline-block; margin-top: 1px;}
 
 #watchers span.description, #watchers span.prog-length {margin: 0.5em 0;}
 #watchers p {margin: 0 0 1em 0;}
