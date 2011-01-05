@@ -1,5 +1,5 @@
 <%= content_tag("li", :id => "broadcast#{broadcast.id}", :class => :two) do %>
-	<%= content_tag("h3", link_to(prevent_widows(broadcast.title.html_safe).html_safe, broadcast.link)) %>
+	<%= content_tag("h3", link_to(prevent_widows(broadcast.title.html_safe).html_safe, broadcast.link)) %><%= "FILM" if broadcast.is_film %>
 	<%= content_tag("span", :class => :channel) do %>
 		<%= broadcast.channel.name.html_safe %>
 		<%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %>
