@@ -3,6 +3,7 @@
 	<%= content_tag("span", :class => :channel) do %>
 		<%= broadcast.channel.name.html_safe %>
 		<%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %>
+		<img src="images/film-icon.png" alt="Film">
 	<% end %>
 	
 	<%= content_tag("span", truncate(broadcast.synopsis, :separator => ' ', :length => 80).html_safe, :class => :description)%>
