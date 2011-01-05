@@ -45,6 +45,8 @@ namespace "schedules" do
   
               b.save
               
+              b.fetch_programme_info
+              
             end
           end
         end
