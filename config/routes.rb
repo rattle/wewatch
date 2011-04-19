@@ -3,6 +3,8 @@ Appointment::Application.routes.draw do
   get "pages/about"
   
   resources :intentions
+  resource :today, :controller => :today
+
   
   match 'logout', :to => 'sessions#destroy'
   match 'tweet', :to => 'intentions#tweet'
