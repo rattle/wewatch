@@ -3,7 +3,7 @@ class Broadcast < ActiveRecord::Base
     belongs_to :channel
     has_many :intentions
 
-    scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%"', false]
+    scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%" AND title NOT LIKE "World Championship Snooker%"', false]
     scope :by_most_popular, :order => "intentions_count DESC"
     
 
