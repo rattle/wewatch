@@ -7,6 +7,13 @@ class Broadcast < ActiveRecord::Base
     scope :by_most_popular, :order => "intentions_count DESC"
     
 
+    def as_json(options={})
+      json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions.count.to_i, :channel => {:name => channel.name}}
+      json[:subtitle] = subtitle unless subtitle.blank?
+      json
+    end   
+
+
    def friends(user)
      in_sql = user.friends.collect { |f| f.id }.join(',')
      return [] if in_sql.blank?
