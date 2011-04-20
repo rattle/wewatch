@@ -4,6 +4,7 @@ xml.wewatch {
 @broadcasts.each do |broadcast|
   xml.broadcast {
     xml.title broadcast.title
+    xml.subtitle broadcast.subtitle unless broadcast.subtitle.blank?
     xml.start broadcast.start
     xml.end broadcast.end
     xml.duration broadcast.duration
