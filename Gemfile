@@ -17,6 +17,7 @@ gem 'mysql'
 gem 'hpricot'
 gem 'twitter'
 gem 'omniauth'
+gem 'paperclip', "~> 2.3"
 
 # To use debugger
 # gem 'ruby-debug'

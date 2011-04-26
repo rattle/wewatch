@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Broadcast < ActiveRecord::Base
     
     belongs_to :channel
@@ -5,6 +7,8 @@ class Broadcast < ActiveRecord::Base
 
     scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%" AND title NOT LIKE "World Championship Snooker%" AND title NOT LIKE "Look North%"', false]
     scope :by_most_popular, :order => "intentions_count DESC"
+    
+    has_attached_file :image, :styles => { :thumb => "156x86", :medium => "303x170" }, :path => "system/:attachment/:id/:style.jpg"
     
 
     def as_json(options={})
@@ -51,6 +55,14 @@ class Broadcast < ActiveRecord::Base
 #     end    
      
      return self
+   end
+   
+   def save_photo
+     if image_url
+       file = open(image_url)
+       self.image = file
+       save
+     end
    end
 
 end
