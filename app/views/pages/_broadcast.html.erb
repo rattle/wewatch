@@ -5,7 +5,7 @@
 		<%= content_tag("span", broadcast.start.strftime('%H:%M'), :class => :time) %>
 		<%= image_tag("film-icon.png", :alt => "Film") if broadcast.is_film %>
 	<% end %>
-	
+	<%= image_tag(broadcast.image.url(:thumb)) if broadcast.image_file_name %>
 	<%= content_tag("span", :class => :description) do %>
 		<%= truncate(broadcast.synopsis, :separator => ' ', :length => 80).html_safe %>
 	<% end %>
