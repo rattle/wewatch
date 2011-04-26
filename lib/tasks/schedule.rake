@@ -43,7 +43,6 @@ namespace "schedules" do
               
               b.title = broadcast.at('programme/display_titles/title').inner_html
               b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
-  
               b.save
               
               b.fetch_programme_info

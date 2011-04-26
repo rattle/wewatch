@@ -22,7 +22,7 @@ class Broadcast < ActiveRecord::Base
    
    def fetch_programme_info
      
-     unless self.is_film
+#     unless self.is_film
       
        response = HTTParty.get(self.link + ".json")
        if response
@@ -32,13 +32,23 @@ class Broadcast < ActiveRecord::Base
            if category["type"] && category["type"] == "format"
              if category["key"] == "films"
                self.is_film = true
-               self.save
              end
            end 
          end
+         
+        if response["programme"]["image"]
+          
+          # This is a bit messy as the JSON feed doesn't include the image URL
+          image = "http://www.bbc.co.uk/iplayer/images/episode/" + self.link.gsub("http://www.bbc.co.uk/programmes/", "") + "_512_288.jpg"
+          
+          self.image_url = image
+        
+        end
+
+         self.save
        end
        
-     end
+#     end    
      
      return self
    end
