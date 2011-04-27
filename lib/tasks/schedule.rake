@@ -33,24 +33,25 @@ namespace "schedules" do
               
             unless b && b.start == starttime && b.end == endtime
               b = Broadcast.new
-              b.channel = channel
-              b.start = starttime
-              b.end =  endtime
-              b.is_repeat = broadcast['is_repeat']
-              b.duration =  broadcast.at('duration').inner_html
-              b.synopsis = broadcast.at('programme/short_synopsis').inner_html      
-              b.link = link
-              
-              b.title = broadcast.at('programme/display_titles/title').inner_html
-              b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
-              b.save
-              
-              b.image_url = "http://www.bbc.co.uk/iplayer/images/episode/" + broadcast.at('programme/pid').inner_html + "_512_288.jpg"
-              
-              b.fetch_programme_info
-              b.save_image
-              
             end
+            
+            b.channel = channel
+            b.start = starttime
+            b.end =  endtime
+            b.is_repeat = broadcast['is_repeat']
+            b.duration =  broadcast.at('duration').inner_html
+            b.synopsis = broadcast.at('programme/short_synopsis').inner_html      
+            b.link = link
+            
+            b.title = broadcast.at('programme/display_titles/title').inner_html
+            b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
+            b.save
+            
+            b.image_url = "http://www.bbc.co.uk/iplayer/images/episode/" + broadcast.at('programme/pid').inner_html + "_512_288.jpg"
+            
+            b.fetch_programme_info
+            b.save_image
+              
           end
         end
       
