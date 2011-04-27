@@ -39,16 +39,7 @@ class Broadcast < ActiveRecord::Base
                self.is_film = true
              end
            end 
-         end
-         
-        if response["programme"]["image"]
-          
-          # This is a bit messy as the JSON feed doesn't include the image URL
-          image = "http://www.bbc.co.uk/iplayer/images/episode/" + self.link.gsub("http://www.bbc.co.uk/programmes/", "") + "_512_288.jpg"
-          
-          self.image_url = image
-        
-        end
+         end         
 
          self.save
        end
@@ -58,7 +49,7 @@ class Broadcast < ActiveRecord::Base
      return self
    end
    
-   def save_photo
+   def save_image
      if image_url
        file = open(image_url)
        self.image = file

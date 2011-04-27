@@ -45,7 +45,10 @@ namespace "schedules" do
               b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
               b.save
               
+              b.image_url = "http://www.bbc.co.uk/iplayer/images/episode/" + broadcast.at('programme/pid').inner_html + "_512_288.jpg"
+              
               b.fetch_programme_info
+              b.save_image
               
             end
           end
