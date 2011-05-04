@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 nbproject
 config/database.yml
+public/system
