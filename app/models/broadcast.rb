@@ -15,6 +15,8 @@ class Broadcast < ActiveRecord::Base
       json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions.count.to_i, :channel => {:name => channel.name}}
       json[:subtitle] = subtitle unless subtitle.blank?
       json[:image] = {:thumb => image.url(:thumb)} if image_file_name
+      # FIXME: This should be populated using real data, somehow...
+      json[:friends_watching] = [{:username => "andrewpendrick"}, {:username => "jamesb"}]
       json
     end   
 
