@@ -15,11 +15,24 @@ class Broadcast < ActiveRecord::Base
       json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions.count.to_i, :channel => {:name => channel.name}}
       json[:subtitle] = subtitle unless subtitle.blank?
       json[:image] = {:thumb => image.url(:thumb)} if image_file_name
-      # FIXME: This should be populated using real data, somehow...
-      json[:friends_watching] = [{:username => "andrewpendrick"}, {:username => "jamesb"}]
+      w_json = []
+
+      if watchers
+        watchers.each do |watcher|
+          w_json << {:username => watcher.twitter.screen_name}
+        end
+      end
+      json[:friends_watching] = w_json
       json
     end   
+    
+  def watchers
+    @watchers
+  end  
 
+  def watchers=(users)
+    @watchers = users
+  end
 
    def friends(user)
      in_sql = user.friends.collect { |f| f.id }.join(',')
