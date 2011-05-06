@@ -11,6 +11,9 @@
 	<%= content_tag("span", hours_and_minutes(@broadcast.duration), :class => "prog-length") %>
 <%= content_tag("p", @broadcast.synopsis.html_safe) %>
 
+<%= link_to @broadcast.link if @broadcast.link %>
+
+
 <% if @broadcast.intentions.size > 0 %>
 	<h2>Watching</h2>
 	
