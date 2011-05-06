@@ -1,0 +1,24 @@
+
+<%= content_tag("h1", @broadcast.title.html_safe) %>
+
+<div class="info">
+	<%= @broadcast.channel.name.html_safe %>
+	<%= content_tag("span", @broadcast.start.strftime('%H:%M, %a %e %b %Y'), :class => :time) %>
+	<%= image_tag("film-icon.png", :alt => "Film") if @broadcast.is_film %>
+</div>
+
+<%= image_tag(@broadcast.image.url(:medium)) if @broadcast.image_file_name %>
+	<%= content_tag("span", hours_and_minutes(@broadcast.duration), :class => "prog-length") %>
+<%= content_tag("p", @broadcast.synopsis.html_safe) %>
+
+<% if @broadcast.intentions.size > 0 %>
+	<h2>Watching</h2>
+	
+	<%= content_tag("ul") do %>
+		<% @broadcast.intentions.each do |intention| %>
+			<%= content_tag("li", "@" + intention.user.twitter.screen_name) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
