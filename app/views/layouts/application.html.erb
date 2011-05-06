@@ -41,7 +41,7 @@
 				<h1><a href="/">We Watch</a></h1>
 				<h2>What your friends are watching on TV tonight.</h2>
                                 <% unless @processing %>
-				<h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) %></h3>
+				<h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) unless @today != Date.today %></h3>
 				
 				<!--
 				<form id="search">
