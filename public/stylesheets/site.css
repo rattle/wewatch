@@ -122,6 +122,9 @@ header p {
 /* Main content
 ----------------------------------------------------------------*/
 
+div.page-header {margin-bottom: 2em;}
+div.page-header h1 {display: inline; margin-right: 2em;}
+
 section.programme-list {position: relative; overflow: hidden; border-bottom: 1px solid #ccc; padding-bottom: 2em; margin-bottom: 2em; clear: both;}
 
 .programme-list ol {overflow: visible; margin-bottom: 2em;}

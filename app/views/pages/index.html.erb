@@ -1,4 +1,11 @@
-
+<section>
+<% unless @processing %>
+		<div class="page-header">
+			<h1><%= @today.strftime("%e %B %Y") %></h1> 
+			<%= link_to 'Yesterday', root_path(:date => @today.yesterday) unless @today != Date.today %>
+		</div>
+	<hr>
+<% end %>
 
 <% @broadcasts.each_with_index do |broadcasts, index| %>
 	<% if broadcasts.size > 0 %>
@@ -20,3 +27,4 @@
 	</section>
 	<% end %>
 <% end %>
+</section>

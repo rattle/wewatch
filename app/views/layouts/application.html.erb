@@ -40,8 +40,6 @@
 			<header role="banner" id="header">
 				<h1><a href="/">We Watch</a></h1>
 				<h2>What your friends are watching on TV tonight.</h2>
-                                <% unless @processing %>
-				<h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) unless @today != Date.today %></h3>
 				
 				<!--
 				<form id="search">
@@ -56,10 +54,8 @@
 				<% else %>
 					<p>Hello, <strong><%= current_user.twitter.screen_name %></strong>. <%= link_to "Sign Out", logout_path %></p>
 				<% end  %>
-                                <% end %>
 			</header>
 			
-			<% unless @processing %><hr><% end %>
 
 <%= yield %>
 
