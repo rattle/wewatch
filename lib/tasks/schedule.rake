@@ -43,7 +43,7 @@ namespace "schedules" do
 
           h3 = broadcast_listing.at('h3')
           
-          starttime = DateTime.parse(day.to_s + " " + h3.at('span').inner_html)
+          starttime = DateTime.parse(day.to_s + " " + h3.at('span').inner_html + " " + Time.now.strftime("%z"))
           
           running_time = h3.at('span')[:title].gsub("Running time (mins): ", "")
           endtime = starttime + running_time.to_i.minutes
