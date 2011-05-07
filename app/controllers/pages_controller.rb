@@ -8,8 +8,8 @@ class PagesController < ApplicationController
       @broadcasts = []
       @broadcast_titles = []
       
-      start_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T18:00:00 " + Time.now.strftime("%z"))
-      end_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T18:59:59" + Time.now.strftime("%z"))
+      start_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T18:00:00 " + Time.zone.now.strftime("%z"))
+      end_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T18:59:59" + Time.zone.now.strftime("%z"))
 
       (6..11).each do |hour|
         @broadcast_titles << "#{hour}PM"
