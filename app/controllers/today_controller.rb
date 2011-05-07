@@ -3,7 +3,7 @@ class TodayController < ApplicationController
   before_filter :get_user_from_request
 
   def show
-    start_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T19:00:00")
+    start_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T18:00:00")
     end_time = DateTime.parse(@today.strftime("%Y-%m-%d") + "T23:59:59")
 
     @broadcasts = Broadcast.where(:start => start_time..end_time).includes(:channel).significant.order("start")
