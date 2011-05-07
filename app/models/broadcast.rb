@@ -4,6 +4,8 @@ class Broadcast < ActiveRecord::Base
     
     belongs_to :channel
     has_many :intentions
+    
+    validates_presence_of :channel
 
     scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%" AND title NOT LIKE "World Championship Snooker%" AND title NOT LIKE "Look North%"', false]
     scope :by_most_popular, :order => "intentions_count DESC"
