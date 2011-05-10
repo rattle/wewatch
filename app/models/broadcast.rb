@@ -21,7 +21,9 @@ class Broadcast < ActiveRecord::Base
 
       if watchers
         watchers.each do |watcher|
-          w_json << {:username => watcher.twitter.screen_name}
+          i = {:username => watcher.user.twitter.screen_name}
+          i[:comment] = watcher.comment unless watcher.comment.blank?
+          w_json << i
         end
       end
       json[:friends_watching] = w_json
@@ -35,11 +37,18 @@ class Broadcast < ActiveRecord::Base
   def watchers=(users)
     @watchers = users
   end
-
-   def friends(user)
-     in_sql = user.friends.collect { |f| f.id }.join(',')
+  
+  def friends(user)
+     in_sql = user.friends.collect { |f| f.id }.join(',')    
      return [] if in_sql.blank?
      User.find(:all, :include => :intentions, :conditions => ["intentions.user_id IN (#{in_sql}) AND intentions.broadcast_id = ?", self.id])
+     
+  end
+
+   def friends_intentions(user)
+     in_sql = user.friends.collect { |f| f.id }.join(',')
+     return [] if in_sql.blank?
+     intentions.all(:conditions => ["user_id IN (#{in_sql})"])
    end
    
    def fetch_programme_info

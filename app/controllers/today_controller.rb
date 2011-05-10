@@ -14,7 +14,7 @@ class TodayController < ApplicationController
         if @user
           @new_broadcasts = []
           @broadcasts.each do |broadcast|
-            broadcast.watchers = broadcast.friends(@user)
+            broadcast.watchers = broadcast.friends_intentions(@user)
 #            broadcast.watchers = [User.last]
             @new_broadcasts << broadcast
           end
