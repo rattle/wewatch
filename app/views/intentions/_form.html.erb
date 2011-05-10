@@ -4,9 +4,10 @@
 	<%= f.label :comment %> (optional)
 	<%= f.text_area :comment, :rows => 4, :maxlength => 100 %>
 
-
-	<%= f.label :tweet, "Tweet this?" %>
-	<%= f.check_box :tweet %>
+	<div>
+		<%= f.label :tweet, "Tweet this?" %>
+		<%= f.check_box :tweet %>
+	</div>
 	
 	<%= f.submit "Watch" %>
 <% end %>

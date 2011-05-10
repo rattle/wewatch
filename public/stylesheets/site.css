@@ -252,7 +252,7 @@ input#intention_submit {
 	overflow: visible;
 	margin: 1em 0 0 0;
 	position: relative;
-	display: block;
+	float: left;
 	border: 0;
 	-webkit-border-radius: 14px;
 	-moz-border-radius: 14px;
@@ -260,7 +260,10 @@ input#intention_submit {
   -webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.1) inset;
 	-moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.1) inset;
 	cursor: pointer;
+	
 }
+
+a.jqmClose { margin-left: 50px; margin-top: 13px; display: block; float: left;}
 
 input#intention_submit:hover {
   background: #8bb214;
