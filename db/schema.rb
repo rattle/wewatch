@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426172307) do
+ActiveRecord::Schema.define(:version => 20110510143101) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20110426172307) do
     t.integer  "broadcast_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
+    t.boolean  "tweet",        :default => false
   end
 
   create_table "users", :force => true do |t|

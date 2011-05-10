@@ -63,14 +63,7 @@
 		<p>Made by <a href="http://www.rattlecentral.com">Rattle.</a> <span>Follow <a href="http://twitter.com/rattlecentral" class="twitter">rattlecentral</a> on twitter.</span></p>
 	</footer>
 	
-    <div id="dialog" class="window jqmWindow">
-    <%= form_tag('/tweet', :id => 'share', :method => :post, :remote => true) do %>
-            <label for="share-text">Let your friends know what you're watching tonight.</label>
-            <textarea name="share" id="share-text" cols="42" rows="3" required aria-required="true"></textarea>
-            <input type="submit" id="share-send" name="share-send" value="Share on Twitter" />  <a href="#" class="jqmClose">No thank you.</a>
-    <% end %>
-
-    <!--  <p><a href="#">Bookmark in your calendar</a> </p> -->
+    <div id="dialog" class="window">
 
     </div>
 	

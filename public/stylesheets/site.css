@@ -215,7 +215,7 @@ p.more-programmes a:hover {
 p.more-programmes a.disabled {color: #999; cursor: default; font-weight: normal;}
 p.more-programmes a.disabled:hover {background: #fff; color: #999; }
 
-
+.username {color: #2396dc; font-weight: bold; margin-right: 5px;}
 
 a.watch-toggle {
 	font-size: 0.857em;
@@ -243,6 +243,29 @@ a.watching {background: #739310 url(../images/tick-mark.png) no-repeat 85% 45%;}
 a.watching:hover {background: #8bb214 url(../images/tick-mark.png) no-repeat 85% 45%; }
 a.watching span.count {background: #526613;}
 
+input#intention_submit {
+	font-size: 0.857em;
+	color: #fff;
+	font-weight: bold;
+	background: #1f85c3;
+	padding: 5px 16px 5px 16px;
+	overflow: visible;
+	margin: 1em 0 0 0;
+	position: relative;
+	display: block;
+	border: 0;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+  	
+  -webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.1) inset;
+	cursor: pointer;
+}
+
+input#intention_submit:hover {
+  background: #8bb214;
+}
+
 span.count {
 	color: #fff;
 	-webkit-border-bottom-left-radius: 14px;
@@ -258,6 +281,10 @@ span.count {
 	left: -28px;
 	top: 0px;
 	}
+	
+div.programme {margin-bottom: 2em;}
+h2 {margin-bottom: 1em;}
+form.new_intention textarea {display: block; margin: 10px 0 10px 0;}	
 	
 /* Footer
 ----------------------------------------------------------------*/

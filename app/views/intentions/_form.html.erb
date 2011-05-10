@@ -1,0 +1,12 @@
+<%= form_for @intention do |f| %>
+
+	<%= f.hidden_field :broadcast_id, :value => @broadcast.id %>
+	<%= f.label :comment %> (optional)
+	<%= f.text_area :comment, :rows => 4, :maxlength => 100 %>
+
+
+	<%= f.label :tweet, "Tweet this?" %>
+	<%= f.check_box :tweet %>
+	
+	<%= f.submit "Watch" %>
+<% end %>

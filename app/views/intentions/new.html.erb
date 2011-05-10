@@ -1,0 +1,6 @@
+
+<h1><%= @broadcast.title %></h1>
+<p><%= @broadcast.channel.name.html_safe %>
+<%= content_tag("span", @broadcast.start.strftime('%H:%M'), :class => :time) %></p>
+
+<%= render "form", :locals => {:broadcast => @broadcast }%>

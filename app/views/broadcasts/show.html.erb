@@ -1,4 +1,5 @@
 
+<div class="programme">
 <%= content_tag("h1", @broadcast.title.html_safe) %>
 
 <div class="info">
@@ -12,14 +13,16 @@
 <%= content_tag("p", @broadcast.synopsis.html_safe) %>
 
 <%= link_to @broadcast.link if @broadcast.link %>
-
+</div>
 
 <% if @broadcast.intentions.size > 0 %>
 	<h2>Watching</h2>
 	
 	<%= content_tag("ul") do %>
 		<% @broadcast.intentions.each do |intention| %>
-			<%= content_tag("li", "@" + intention.user.twitter.screen_name) %>
+			<%= content_tag("li") do %>
+				<%= user_and_comment(intention) %>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>

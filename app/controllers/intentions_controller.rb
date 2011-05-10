@@ -2,11 +2,19 @@ class IntentionsController < ApplicationController
     respond_to :html, :xml, :js
     before_filter :login_required
 
-    def create
-      @broadcast = Broadcast.find_by_id(params[:broadcast_id])
+
+    def new
+      @broadcast = Broadcast.find(params[:broadcast_id])
       @intention = Intention.new(:broadcast_id => @broadcast.id, :user => current_user)
+    end
+
+
+    def create
+      @intention = Intention.new(params[:intention])
+      @intention.user = current_user
+      
       if @intention.save
-        respond_with(@intention, @broadcast) do |format|
+        respond_with(@intention, @intention.broadcast) do |format|
           format.html { redirect_to root_path }
         end
       else

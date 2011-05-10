@@ -1,0 +1,2 @@
+$('#dialog').append('<h4><%= @broadcast.title %></h4> <%= escape_javascript(render(:partial => "form", :locals => { :broadcast => @broadcast })) %>');
+$('#dialog').jqmShow();
