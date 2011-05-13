@@ -260,7 +260,7 @@ input#intention_submit {
 	
 }
 
-a.jqmClose { margin-left: 50px; margin-top: 13px; display: block; float: left;}
+a.jqmClose { margin-left: 1em; margin-top: 1em; display: block; float: left;}
 
 input#intention_submit:hover {
   background: #8bb214;
