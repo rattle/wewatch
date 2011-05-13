@@ -26,7 +26,7 @@
 	<%= csrf_meta_tag %>
 
 </head>
-<body class="home">	
+	<body class="home">	
 		
 		<section class="container">
 
@@ -54,37 +54,41 @@
 				<% else %>
 					<p>Hello, <strong><%= current_user.twitter.screen_name %></strong>. <%= link_to "Sign Out", logout_path %></p>
 				<% end  %>
+				
+				<% unless @processing %>
+					<h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) unless @today != Date.today %></h3>		
+				<% end %>
 			</header>
 			
+			<hr>
+			
 
-<%= yield %>
+			<%= yield %>
 
-	<footer class="vcard">
-		<p>Made by <a href="http://www.rattlecentral.com">Rattle.</a> <span>Follow <a href="http://twitter.com/rattlecentral" class="twitter">rattlecentral</a> on twitter.</span></p>
-	</footer>
+			<footer class="vcard">
+				<p>Made by <a href="http://www.rattlecentral.com">Rattle.</a> <span>Follow <a href="http://twitter.com/rattlecentral" class="twitter">rattlecentral</a> on twitter.</span></p>
+			</footer>
 	
-    <div id="dialog" class="window jqmWindow">
-
-    </div>
+    		<div id="dialog" class="window jqmWindow"></div>
 	
-</section>
-<!-- /end main content -->
+		</section>
+		<!-- /end main content -->
+		
+		<hr>
 
-<hr>
+		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-19889386-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-19889386-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
-</body>
+	</body>
 </html>

@@ -10,7 +10,7 @@ class Broadcast < ActiveRecord::Base
     scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%" AND title NOT LIKE "World Championship Snooker%" AND title NOT LIKE "Look North%"', false]
     scope :by_most_popular, :order => "intentions_count DESC"
     
-    has_attached_file :image, :styles => { :thumb => "156x86", :medium => "303x170" }, :path => "public/system/:attachment/:id/:style.jpg", :url => "/system/:attachment/:id/:style.jpg"
+    has_attached_file :image, :styles => { :thumb => "156x86", :medium => "362x204" }, :path => "public/system/:attachment/:id/:style.jpg", :url => "/system/:attachment/:id/:style.jpg"
     
 
     def as_json(options={})
