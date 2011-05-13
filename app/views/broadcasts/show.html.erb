@@ -19,15 +19,16 @@
 		
 	</div>
 	
-	<% if @broadcast.intentions.size > 0 %>
+	
 		<aside>
-		
-			<h3>Watching</h3>
-			
-			<%= content_tag("ul", :class => :viewers) do %>
-				<% @broadcast.intentions.each do |intention| %>
-					<%= content_tag("li") do %>
-						<%= user_and_comment(intention) %>
+			<% if @broadcast.intentions.size > 0 %>
+				<h3>Watching</h3>
+				
+				<%= content_tag("ul", :class => :viewers) do %>
+					<% @broadcast.intentions.each do |intention| %>
+						<%= content_tag("li") do %>
+							<%= user_and_comment(intention) %>
+						<% end %>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -47,7 +48,7 @@
 		
 		</aside>
 		<!-- /end supplementary or social information -->
-	<% end %>
+	
 	
 </section>
 
