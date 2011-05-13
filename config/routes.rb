@@ -7,7 +7,6 @@ Appointment::Application.routes.draw do
   resources :broadcasts
   
   match 'logout', :to => 'sessions#destroy'
-  match 'tweet', :to => 'intentions#tweet'
   match 'watchers', :to => 'intentions#watchers'
   match 'processing', :to => 'pages#processing'
   match '/auth/:provider/callback', :to => 'sessions#create'

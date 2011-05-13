@@ -36,22 +36,6 @@ class IntentionsController < ApplicationController
        end
     end
 
-    def tweet
-      begin
-      oauth = Twitter::OAuth.new(CONSUMER_KEY, CONSUMER_SECRET)
-      oauth.authorize_from_access(current_user.twitter.oauth_token, current_user.twitter.oauth_secret)
-      client = Twitter::Base.new(oauth)
-      client.update(params[:share]) unless params[:share].blank?
-      #Rails.logger.info params[:share]
-      respond_with() do |format|
-        format.html { redirect_to root_path }
-      end
-      rescue 
-        flash[:error] = "Failed to add your update to twitter."
-        redirect_to root_path
-      end
-    end
-
     def watchers
       @broadcast = Broadcast.find_by_id(params[:broadcast_id])
       @total = @broadcast.intentions.count
