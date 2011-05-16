@@ -7,7 +7,7 @@ class Broadcast < ActiveRecord::Base
     
     validates_presence_of :channel
 
-    scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%" AND title NOT LIKE "World Championship Snooker%" AND title NOT LIKE "Look North%"', false]
+    scope :significant, :conditions => ['is_repeat = ? AND title NOT LIKE "%News%" AND title NOT LIKE "%Weather%" AND title NOT LIKE "%EastEnders%" AND title NOT LIKE "The National Lottery%" AND title NOT LIKE "World Championship Snooker%" AND title NOT LIKE "Look North%" AND title NOT LIKE "Hollyoaks" AND title NOT LIKE "4thought.tv" AND title NOT LIKE "The One Show" AND title NOT LIKE "Eggheads"', false]
     scope :by_most_popular, :order => "intentions_count DESC"
     
     has_attached_file :image, :styles => { :thumb => "156x86", :medium => "362x204" }, :path => "public/system/:attachment/:id/:style.jpg", :url => "/system/:attachment/:id/:style.jpg"
