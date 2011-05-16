@@ -2,7 +2,7 @@
 
 	<%= f.hidden_field :broadcast_id, :value => @broadcast.id %>
 	<%= f.label :comment %> (optional)
-	<%= f.text_area :comment, :rows => 4, :maxlength => 100, :placeholder => "Tell your friends why you are watching this (optional)" %>
+	<%= f.text_area :comment, :rows => 4, :maxlength => 80, :placeholder => "Tell your friends why you are watching this (optional)" %>
 
 	<div>
 		<%= f.label :tweet, "Tweet this?" %>

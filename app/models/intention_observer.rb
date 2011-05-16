@@ -6,8 +6,15 @@ class IntentionObserver < ActiveRecord::Observer
     if intention.tweet?
       
       message = ""
-      message += intention.comment.to_s + " - " unless intention.comment.blank?      
-      message += intention.broadcast.title + " " + Rails.application.routes.url_helpers.broadcast_path(intention.broadcast, :host => "wewatch.co.uk", :only_path => false)
+      message += intention.comment.to_s + " - " unless intention.comment.blank?     
+      
+      if intention.broadcast.title.length > 25
+        message += intention.broadcast.title[0,25] + "..."
+      else
+        message += intention.broadcast.title
+      end
+             
+      message += " " + Rails.application.routes.url_helpers.broadcast_path(intention.broadcast, :host => "wewatch.co.uk", :only_path => false)
       
       begin
       oauth = Twitter::OAuth.new(CONSUMER_KEY, CONSUMER_SECRET)
