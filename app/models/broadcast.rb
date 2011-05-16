@@ -22,7 +22,7 @@ class Broadcast < ActiveRecord::Base
       if watchers
         watchers.each do |watcher|
           i = {:username => watcher.user.twitter.screen_name}
-          i[:comment] = watcher.comment unless watcher.comment.blank?
+#          i[:comment] = watcher.comment unless watcher.comment.blank?
           w_json << i
         end
       end
