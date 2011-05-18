@@ -12,6 +12,6 @@ Appointment::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'pages#index'
 
-  root :to => "pages#index"
+  root :to => "homepage#show"
 
 end
