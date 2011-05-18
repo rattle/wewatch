@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+
+  def friends_with_intentions
+    friends.where("intentions_count > 0")
+  end
+
   def self.create_from_hash!(hash)
     create(:name => hash['user_info']['name'])
   end
