@@ -21,6 +21,7 @@ namespace "schedules" do
     
     channel_lists = doc.search("td.channelSlots")
     
+    
     channel_lists.each do |channel_list|
       
       channel_ref = channel_list[:id].gsub("SlotList_", "")
@@ -34,6 +35,7 @@ namespace "schedules" do
       elsif channel_ref == "E4"
         channel = Channel.find_by_name("E4")        
       end
+      
       
       if channel
         puts channel.name        
