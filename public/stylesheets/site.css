@@ -129,7 +129,7 @@ header p {
 .list .info {float: left; width: 20em; margin-right: 5em; margin-top: 0; padding-top: 0;}
 .list .info span {margin: 0 0 .5em 0; padding: 0; }
 .list .info img {float: none;}
-.list a {margin-bottom: 10px;}
+.list a.watch-toggle {margin-bottom: 10px;}
 
 section.programme-list {position: relative; overflow: hidden; border-bottom: 1px solid #ccc; padding-bottom: 2em; margin-bottom: 2em; clear: both;}
 
