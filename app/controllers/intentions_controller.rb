@@ -1,6 +1,6 @@
 class IntentionsController < ApplicationController
     respond_to :html, :xml, :js
-    before_filter :login_required
+    before_filter :login_required, :except => [:create]
 
 
     def new
@@ -11,11 +11,26 @@ class IntentionsController < ApplicationController
 
     def create
       @intention = Intention.new(params[:intention])
-      @intention.user = current_user
+      
+      if current_user
+        @intention.user = current_user
+      elsif params[:username]
+
+        auth = Authorization.find_by_screen_name(params[:username])
+        if auth
+          @intention.user = auth.user
+        else
+          raise "User not recognised" and return
+        end      
+        
+      else
+        raise "Unauthorised request" and return
+      end
       
       if @intention.save
         respond_with(@intention, @intention.broadcast) do |format|
           format.html { redirect_to root_path }
+          format.json @intention
         end
       else
         flash[:error] = 'Failed to add watch'
