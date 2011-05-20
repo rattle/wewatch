@@ -30,7 +30,7 @@ class IntentionsController < ApplicationController
       if @intention.save
         respond_with(@intention, @intention.broadcast) do |format|
           format.html { redirect_to root_path }
-          format.json @intention
+          format.json
         end
       else
         flash[:error] = 'Failed to add watch'

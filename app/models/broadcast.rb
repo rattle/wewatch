@@ -12,6 +12,7 @@ class Broadcast < ActiveRecord::Base
     
     has_attached_file :image, :styles => { :thumb => "156x86", :medium => "362x204" }, :path => "public/system/:attachment/:id/:style.jpg", :url => "/system/:attachment/:id/:style.jpg"
     
+    attr_accessor :watching
 
     def as_json(options={})
       json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions.count.to_i, :channel => {:name => channel.name}}
@@ -26,6 +27,11 @@ class Broadcast < ActiveRecord::Base
           w_json << i
         end
       end
+      
+      if !watching.nil?
+        json[:watching] = watching
+      end
+      
       json[:friends_watching] = w_json
       json
     end   
