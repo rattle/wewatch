@@ -1,2 +1,2 @@
-$('#dialog').html('<h1><%= @broadcast.title %></h1> <%= escape_javascript(render(:partial => "form", :locals => { :broadcast => @broadcast })) %> <a href="#" class="jqmClose">Cancel</a>');
+$('#dialog').html('<h1><%= escape_javascript(@broadcast.title) %></h1> <%= escape_javascript(render(:partial => "form", :locals => { :broadcast => @broadcast })) %> <a href="#" class="jqmClose">Cancel</a>');
 $('#dialog').jqmShow();
