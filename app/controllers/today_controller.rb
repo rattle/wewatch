@@ -19,6 +19,7 @@ class TodayController < ApplicationController
             intention = broadcast.intentions.find_by_user_id(@user.id)
             if intention
               broadcast.watching = true
+              broadcast.watching_id = intention.id
             else
               broadcast.watching = false
             end

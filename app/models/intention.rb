@@ -6,6 +6,5 @@ class Intention < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :broadcast_id
   
   validates_length_of :comment, :maximum => 80
-  
-  
+    
 end
