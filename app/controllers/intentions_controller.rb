@@ -1,7 +1,9 @@
 class IntentionsController < ApplicationController
-    respond_to :html, :xml, :js
+    respond_to :html, :xml, :js, :json
     before_filter :login_required, :except => [:create]
 
+    skip_before_filter :verify_authenticity_token
+    
 
     def new
       @broadcast = Broadcast.find(params[:broadcast_id])
@@ -28,13 +30,13 @@ class IntentionsController < ApplicationController
       end
       
       if @intention.save
-        respond_with(@intention, @intention.broadcast) do |format|
+        respond_with(@intention) do |format|
           format.html { redirect_to root_path }
-          format.json
         end
       else
-        flash[:error] = 'Failed to add watch'
-        redirect_to root_path 
+        respond_with(@intention) do |format|
+          format.html { redirect_to root_path }
+        end
       end
     end
     
