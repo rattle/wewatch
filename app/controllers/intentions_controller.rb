@@ -1,6 +1,6 @@
 class IntentionsController < ApplicationController
     respond_to :html, :xml, :js, :json
-    before_filter :login_required, :except => [:create]
+    before_filter :login_required, :except => [:create, :destroy]
 
     skip_before_filter :verify_authenticity_token
     
@@ -41,7 +41,12 @@ class IntentionsController < ApplicationController
     end
     
     def destroy
-       @intention = current_user.intentions.find(params[:id]) 
+      if current_user
+        @intention = current_user.intentions.find(params[:id]) 
+      elsif params[:username]
+        auth = Authorization.find_by_screen_name!(params[:username])
+        @intention = auth.user.intentions.find(params[:id])        
+      end  
        @broadcast = @intention.broadcast
        if @intention.destroy
         respond_with(@intention) do |format|
