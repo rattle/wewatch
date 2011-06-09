@@ -1,4 +1,13 @@
 class ApplicationController < ActionController::Base
+
+
+  module Exceptions
+    class BadRequest < StandardError; end
+    class Unauthorized < StandardError; end
+  end
+
+  include Exceptions
+
   protect_from_forgery
 
   before_filter :get_date
@@ -6,11 +15,11 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user
   end
-  
+
   def login_required
-    redirect_to "/auth/twitter" unless logged_in? 
+    redirect_to "/auth/twitter" unless logged_in?
   end
-  
+
 
   protected
   def get_date

@@ -33,3 +33,6 @@ Appointment::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+CONSUMER_KEY='8M87tYKRudLAwgMV4bC4A'
+CONSUMER_SECRET='GvJUM3tOuafIRie5AmigpX9g97o06n68k1CxUCc39kc'

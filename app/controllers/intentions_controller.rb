@@ -3,7 +3,9 @@ class IntentionsController < ApplicationController
     before_filter :login_required, :except => [:create, :destroy]
 
     skip_before_filter :verify_authenticity_token
-    
+
+    rescue_from BadRequest, :with => :bad_request
+    rescue_from Unauthorized, :with => :unauthorised
 
     def new
       @broadcast = Broadcast.find(params[:broadcast_id])
@@ -13,7 +15,7 @@ class IntentionsController < ApplicationController
 
     def create
       @intention = Intention.new(params[:intention])
-      
+
       if current_user
         @intention.user = current_user
       elsif params[:username]
@@ -22,13 +24,13 @@ class IntentionsController < ApplicationController
         if auth
           @intention.user = auth.user
         else
-          raise "User not recognised" and return
-        end      
-        
+          raise BadRequest, "User not recognised" and return
+        end
+
       else
-        raise "Unauthorised request" and return
+        raise Unauthorized, "Unauthorised request" and return
       end
-      
+
       if @intention.save
         respond_with(@intention) do |format|
           format.html { redirect_to root_path }
@@ -39,14 +41,17 @@ class IntentionsController < ApplicationController
         end
       end
     end
-    
+
     def destroy
       if current_user
-        @intention = current_user.intentions.find(params[:id]) 
+        @intention = current_user.intentions.find(params[:id])
       elsif params[:username]
-        auth = Authorization.find_by_screen_name!(params[:username])
-        @intention = auth.user.intentions.find(params[:id])        
-      end  
+        auth = Authorization.find_by_screen_name(params[:username])
+
+        raise BadRequest, "User not found" if auth.nil?
+
+        @intention = auth.user.intentions.find(params[:id])
+      end
        @broadcast = @intention.broadcast
        if @intention.destroy
         respond_with(@intention) do |format|
@@ -54,7 +59,7 @@ class IntentionsController < ApplicationController
         end
        else
         flash[:error] = 'Failed to remove watch'
-        redirect_to root_path 
+        redirect_to root_path
        end
     end
 
@@ -65,6 +70,16 @@ class IntentionsController < ApplicationController
       respond_with(@friends, @broadcast, @total) do |format|
         format.html { redirect_to root_path }
       end
+    end
+
+    private
+
+    def unauthorised
+      render :text => "Not authorised", :status => :unauthorized
+    end
+
+    def bad_request
+      render :text => "Bad request", :status => :bad_request
     end
 
 end

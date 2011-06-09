@@ -33,6 +33,9 @@ gem 'paperclip', "~> 2.3"
 # and rake tasks are available in development mode:
 
 group :development, :test do
+  gem 'shoulda'
+  gem 'RedCloth', '>= 4.1.1'
+
     gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
     gem 'rspec'
     gem 'rspec-rails'

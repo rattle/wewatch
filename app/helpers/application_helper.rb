@@ -1,11 +1,11 @@
 module ApplicationHelper
-  
+
   def hours_and_minutes(number)
     hours = (number / 3600).to_i
     minutes = (number/60).remainder(60)
-    
+
     if hours > 0
-      if minutes > 0 
+      if minutes > 0
         pluralize(hours, "hr") + ", " + pluralize(minutes, "min")
       else
         pluralize(hours, "hr")
@@ -20,7 +20,7 @@ module ApplicationHelper
       content_tag(:div, "<p>#{flash[type]}</p>".html_safe, :class => type) if flash[type]
     end
   end
-  
+
   def prevent_widows(text)
     words = text.split(" ")
     if words.size >= 4
@@ -40,6 +40,11 @@ module ApplicationHelper
       text
     end
   end
-  
-  
+
+  def day_path(options = {})
+
+    url_for(:controller => :days, :action => :show, :year => options[:year], :month => options[:month], :day => options[:day])
+  end
+
+
 end

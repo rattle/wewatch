@@ -5,3 +5,4 @@ tmp/**/*
 nbproject
 config/database.yml
 public/system
+doc/guides

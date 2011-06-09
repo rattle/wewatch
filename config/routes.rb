@@ -1,11 +1,15 @@
 Appointment::Application.routes.draw do
 
   get "pages/about"
-  
+
   resources :intentions
   resource :today, :controller => :today
   resources :broadcasts
-  
+
+  #resources :on, :constraints => {:id => /[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/}, :as => :day, :controller => :days, :only => :show
+
+  match ':year/:month/:day', :to => 'days#show', :year => /[0-9][0-9][0-9][0-9]/, :month => /[0-9][0-9]/, :day => /[0-9][0-9]/
+
   match 'logout', :to => 'sessions#destroy'
   match 'watchers', :to => 'intentions#watchers'
   match 'processing', :to => 'pages#processing'

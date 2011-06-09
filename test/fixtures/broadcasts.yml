@@ -1,0 +1,20 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+motd:
+  channel: bbcone
+  title: Match of the Day
+  synopsis: Roundup of the day's football matches
+  is_film: false
+  duration: 3600
+  start: <%= DateTime.parse("2011-01-01 16:30") %>
+  end: <%= DateTime.parse("2011-01-01 17:30") %>
+  link: http://www.bbc.co.uk/motd
+
+jurassic_park:
+  channel: bbctwo
+  title: Jurassic Park
+  synopsis: Dino film
+  is_film: true
+  duration: 8400
+  start: <%= DateTime.parse("2011-01-01 16:30") %>
+  end: <%= DateTime.parse("2011-01-01 18:30") %>
