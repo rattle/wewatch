@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110510143101) do
+ActiveRecord::Schema.define(:version => 20110609080013) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110510143101) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "significant"
   end
 
   create_table "channels", :force => true do |t|

@@ -35,12 +35,5 @@ gem 'paperclip', "~> 2.3"
 group :development, :test do
   gem 'shoulda'
   gem 'RedCloth', '>= 4.1.1'
-
-    gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
-    gem 'rspec'
-    gem 'rspec-rails'
-    gem 'cucumber'
-    gem 'cucumber-rails'
-    gem 'factory_girl_rails'
-    gem 'webrat'
+  gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 end
