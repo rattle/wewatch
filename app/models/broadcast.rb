@@ -22,7 +22,7 @@ class Broadcast < ActiveRecord::Base
     end
 
     def as_json(options={})
-      json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions.count.to_i, :channel => {:name => channel.name}}
+      json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions.count.to_i, :channel => {:name => channel.name}, :link => link}
       json[:subtitle] = subtitle unless subtitle.blank?
       json[:image] = {:thumb => image.url(:thumb)} if image_file_name
       w_json = []
