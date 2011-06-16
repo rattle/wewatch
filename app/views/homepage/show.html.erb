@@ -46,3 +46,11 @@
 
   <% end %>
 <% end %>
+
+<div class="stream">
+  <h2>Watching</h2>
+
+  <% @intentions.each do |intention| %>
+    <p><%= content_tag("span", "@" + intention.user.twitter.screen_name, :class => :user) %>: <%= intention.comment %><br> <%= link_to intention.broadcast.title, intention.broadcast %> <%= intention.broadcast.start.strftime('%H:%M') %>, <%= intention.broadcast.channel.name %><br><%= content_tag("span", time_ago_in_words(intention.created_at) + " ago", :class => :timestamp) %>  </p>
+  <% end %>
+</div>
