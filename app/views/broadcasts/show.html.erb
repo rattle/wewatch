@@ -1,55 +1,55 @@
 
 <section class="programme row">
-	
-	<figure class="four"><%= image_tag(@broadcast.image.url(:medium)) if @broadcast.image_file_name %></figure>
-	
-	<div class="programme-details four">
-		<%= content_tag("h1", @broadcast.title.html_safe) %>
-	
-		<%= content_tag("span", :class => :channel) do %>
-			<%= @broadcast.channel.name.html_safe %>
-			<%= content_tag("span", @broadcast.start.strftime('%H:%M'), :class => :time) %>
-			<%= image_tag("film-icon.png", :alt => "Film") if @broadcast.is_film %>
-		<% end %>
-		
-		<%= content_tag("p", @broadcast.synopsis.html_safe, :class => :description) %>
-		<%= content_tag("span", hours_and_minutes(@broadcast.duration), :class => "prog-length") %>
 
-		<p><%= link_to @broadcast.link, @broadcast.link if @broadcast.link %></p>
-		
-	</div>
-	
-	
-		<aside>
-			<% if @broadcast.intentions.size > 0 %>
-				<h3>Watching</h3>
-				
-				<%= content_tag("ul", :class => :viewers) do %>
-					<% @broadcast.intentions.each do |intention| %>
-						<%= content_tag("li") do %>
-							<%= user_and_comment(intention) %>
-						<% end %>
-					<% end %>
-				<% end %>
-			<% end %>
-			
-			<% if signed_in? %>
-		<% intention = @broadcast.intentions.find_by_user_id(current_user.id) %>
+  <figure class="four"><%= image_tag(@broadcast.image.url(:medium)) if @broadcast.image_file_name %></figure>
 
-		<% unless intention %>
-			<%= link_to new_intention_path(:broadcast_id => @broadcast.id), :class => "watch-toggle", :remote => true do %><%= content_tag("span", @broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
-		<% else %>
-			<%= link_to intention_path(intention), :method => :delete, :class => "watch-toggle watching", :remote => true do %><%= content_tag("span", @broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
-		<% end %>
+  <div class="programme-details four">
+    <%= content_tag("h1", @broadcast.title.html_safe) %>
 
-	<% else %>
-		<%= link_to intentions_path(:broadcast_id => @broadcast.id), :method => :post, :class => "watch-toggle" do %><%= content_tag("span", @broadcast.intentions.count.to_i.to_s, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
-	<% end %>
-		
-		</aside>
-		<!-- /end supplementary or social information -->
-	
-	
+    <%= content_tag("span", :class => :channel) do %>
+      <%= @broadcast.channel.name.html_safe %>
+      <%= content_tag("span", @broadcast.start.strftime('%H:%M'), :class => :time) %>
+      <%= image_tag("film-icon.png", :alt => "Film") if @broadcast.is_film %>
+    <% end %>
+
+    <%= content_tag("p", @broadcast.synopsis.html_safe, :class => :description) %>
+    <%= content_tag("span", hours_and_minutes(@broadcast.duration), :class => "prog-length") %>
+
+    <p><%= link_to @broadcast.link, @broadcast.link if @broadcast.link %></p>
+
+  </div>
+
+
+    <aside>
+      <% if @broadcast.intentions_count.to_i > 0 %>
+        <h3>Watching</h3>
+
+        <%= content_tag("ul", :class => :viewers) do %>
+          <% @broadcast.intentions.each do |intention| %>
+            <%= content_tag("li") do %>
+              <%= user_and_comment(intention) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if signed_in? %>
+    <% intention = @broadcast.intentions.find_by_user_id(current_user.id) %>
+
+    <% unless intention %>
+      <%= link_to new_intention_path(:broadcast_id => @broadcast.id), :class => "watch-toggle", :remote => true do %><%= content_tag("span", @broadcast.intentions_count.to_i, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
+    <% else %>
+      <%= link_to intention_path(intention), :method => :delete, :class => "watch-toggle watching", :remote => true do %><%= content_tag("span", @broadcast.intentions_count.to_i, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
+    <% end %>
+
+  <% else %>
+    <%= link_to intentions_path(:broadcast_id => @broadcast.id), :method => :post, :class => "watch-toggle" do %><%= content_tag("span", @broadcast.intentions_count.to_i, :class => :count, :title => "Number of people watching this") %><span class="buttontext">Watch</span><% end %>
+  <% end %>
+
+    </aside>
+    <!-- /end supplementary or social information -->
+
+
 </section>
 
 
