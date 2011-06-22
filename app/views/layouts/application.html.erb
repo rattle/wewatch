@@ -52,7 +52,7 @@
         <% if !signed_in?  %>
           <p><a href="/auth/twitter">Sign in with Twitter</a></p>
         <% else %>
-          <p>Hello, <strong><%= current_user.username %></strong>. <%= link_to "Sign Out", logout_path %></p>
+          <p>Hello, <strong><%= link_to current_user.username, username_path(current_user) %></strong>. <%= link_to "Sign Out", logout_path %></p>
         <% end  %>
 
         <% unless @processing %>

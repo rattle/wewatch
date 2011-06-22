@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
 
+  def recent_intentions
+    intentions.joins(:broadcast).includes(:broadcast => :channel).order("broadcasts.start DESC").limit(10)
+  end
+
   def friends_with_intentions
     friends.where("intentions_count > 0")
   end

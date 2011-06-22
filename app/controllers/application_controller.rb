@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
 
-
   module Exceptions
     class BadRequest < StandardError; end
     class Unauthorized < StandardError; end
   end
 
   include Exceptions
+
+  helper :all
 
   protect_from_forgery
 
