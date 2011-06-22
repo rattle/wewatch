@@ -20,9 +20,9 @@ class IntentionsController < ApplicationController
         @intention.user = current_user
       elsif params[:username]
 
-        auth = Authorization.find_by_screen_name(params[:username])
-        if auth
-          @intention.user = auth.user
+        user = User.find_by_username(params[:username])
+        if user
+          @intention.user = user
         else
           raise BadRequest, "User not recognised" and return
         end
@@ -46,11 +46,11 @@ class IntentionsController < ApplicationController
       if current_user
         @intention = current_user.intentions.find(params[:id])
       elsif params[:username]
-        auth = Authorization.find_by_screen_name(params[:username])
+        user = User.find_by_username(params[:username])
 
-        raise BadRequest, "User not found" if auth.nil?
+        raise BadRequest, "User not found" if user.nil?
 
-        @intention = auth.user.intentions.find(params[:id])
+        @intention = user.intentions.find(params[:id])
       end
        @broadcast = @intention.broadcast
        if @intention.destroy

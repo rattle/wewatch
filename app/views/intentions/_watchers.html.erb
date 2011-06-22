@@ -10,7 +10,7 @@
 
 <ul class="viewer-names">
   <% friends.each do |friend| %>
-    <li><a href="http://twitter.com/<%= friend.twitter.screen_name %>"><%= friend.twitter.screen_name %></a></li>
+    <li><%= friend.username %></li>
   <% end %>
 </ul>
 

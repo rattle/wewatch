@@ -2,93 +2,93 @@
 <html>
 <head>
   <title>We Watch. Find out what your friends are watching tonight.</title>
-	<!-- Layout Grid -->
-	<link rel="stylesheet" href="/stylesheets/layout.css" type="text/css" media="screen" />
-	
-	<!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
-	<!--[if IE 6]><link rel="stylesheet" href="stylesheets/ie6.css" type="text/css" media="screen" /><![endif]-->
-	
-	<link rel="stylesheet" href="/stylesheets/smallerscreen.css" media="only screen and (max-width: 1023px)" />
-	<link rel="stylesheet" href="/stylesheets/mobile.css" media="handheld, only screen and (max-width: 767px)" />
+  <!-- Layout Grid -->
+  <link rel="stylesheet" href="/stylesheets/layout.css" type="text/css" media="screen" />
 
-	<link rel="stylesheet" href="/stylesheets/site.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="/stylesheets/jqModal.css" type="text/css" media="screen" />
-	<!-- /end stylesheets -->
-		
-	<%= javascript_include_tag :defaults %>
-	<%= javascript_include_tag 'jqModal.js' %>
-	<%= javascript_include_tag 'jcarousellite.js' %>
-	
-	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
+  <!--[if IE 6]><link rel="stylesheet" href="stylesheets/ie6.css" type="text/css" media="screen" /><![endif]-->
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <link rel="stylesheet" href="/stylesheets/smallerscreen.css" media="only screen and (max-width: 1023px)" />
+  <link rel="stylesheet" href="/stylesheets/mobile.css" media="handheld, only screen and (max-width: 767px)" />
 
-	<%= csrf_meta_tag %>
+  <link rel="stylesheet" href="/stylesheets/site.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/stylesheets/jqModal.css" type="text/css" media="screen" />
+  <!-- /end stylesheets -->
+
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jqModal.js' %>
+  <%= javascript_include_tag 'jcarousellite.js' %>
+
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <%= csrf_meta_tag %>
 
 </head>
-	<body class="home">	
-		
-		<section class="container">
+  <body class="home">
+
+    <section class="container">
 
             <% if flash[:error] %>
               <div class="error"><p><strong>Sorry</strong>, <%= flash[:error] %></p></div>
             <% end %>
-            
+
             <p><a class="about" href="#">What's this about?</a></p>
             <p id="about-text">The TV schedule is still important in determining what we watch. Key to this is a sense of watching something on its first transmission "first time to see TV", so you can talk about it with friends and colleagues. This is a proof-of-concept service that shows original programmes on BBC tonight (we can't get the other channels yet because of rights issues) and lets people share their TV plans. We'd love to improve it so please tell us how through Twitter <a href="http://www.twitter.com/we_watch">@we_watch</a></p>
-		
-			<header role="banner" id="header">
-				<h1><a href="/">We Watch</a></h1>
-				<h2>What your friends are watching on TV tonight.</h2>
-				
-				<!--
-				<form id="search">
-					<label for="find">Add a programme</label>
-					<input id="find" type="search">
-					<input type="submit" value="Add">
-				</form>
-				-->
-				
-				<% if !signed_in?  %>
-					<p><a href="/auth/twitter">Sign in with Twitter</a></p>
-				<% else %>
-					<p>Hello, <strong><%= current_user.twitter.screen_name %></strong>. <%= link_to "Sign Out", logout_path %></p>
-				<% end  %>
-				
-				<% unless @processing %>
-					<h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) unless @today != Date.today %></h3>		
-				<% end %>
-			</header>
-			
-			<hr>
-			
 
-			<%= yield %>
+      <header role="banner" id="header">
+        <h1><a href="/">We Watch</a></h1>
+        <h2>What your friends are watching on TV tonight.</h2>
 
-			<footer class="vcard">
-				<p>Made by <a href="http://www.rattlecentral.com">Rattle.</a> <span>Follow <a href="http://twitter.com/rattlecentral" class="twitter">rattlecentral</a> on twitter.</span></p>
-			</footer>
-	
-    		<div id="dialog" class="window jqmWindow"></div>
-	
-		</section>
-		<!-- /end main content -->
-		
-		<hr>
+        <!--
+        <form id="search">
+          <label for="find">Add a programme</label>
+          <input id="find" type="search">
+          <input type="submit" value="Add">
+        </form>
+        -->
 
-		<script type="text/javascript">
-		
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-19889386-1']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		
-		</script>
+        <% if !signed_in?  %>
+          <p><a href="/auth/twitter">Sign in with Twitter</a></p>
+        <% else %>
+          <p>Hello, <strong><%= current_user.username %></strong>. <%= link_to "Sign Out", logout_path %></p>
+        <% end  %>
 
-	</body>
+        <% unless @processing %>
+          <h3><%= @today.strftime("%e %B %Y") %> <%= link_to 'Yesterday', root_path(:date => @today.yesterday) unless @today != Date.today %></h3>
+        <% end %>
+      </header>
+
+      <hr>
+
+
+      <%= yield %>
+
+      <footer class="vcard">
+        <p>Made by <a href="http://www.rattlecentral.com">Rattle.</a> <span>Follow <a href="http://twitter.com/rattlecentral" class="twitter">rattlecentral</a> on twitter.</span></p>
+      </footer>
+
+        <div id="dialog" class="window jqmWindow"></div>
+
+    </section>
+    <!-- /end main content -->
+
+    <hr>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-19889386-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </body>
 </html>

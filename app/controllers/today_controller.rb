@@ -40,12 +40,7 @@ class TodayController < ApplicationController
   def get_user_from_request
 
     if params[:username]
-
-      auth = Authorization.find_by_screen_name(params[:username])
-      if auth
-        @user = auth.user
-      end
-
+      @user = User.find_by_username!(params[:username])
     end
 
   end
