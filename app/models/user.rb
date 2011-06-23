@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authorizations
 
   attr_readonly :username
+  attr_protected :admin
 
   def recent_intentions
     intentions.joins(:broadcast).includes(:broadcast => :channel).order("broadcasts.start DESC").limit(10)

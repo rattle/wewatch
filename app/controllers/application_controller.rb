@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
     redirect_to "/auth/twitter" unless logged_in?
   end
 
+
+  def authenticate_admin!
+    raise Unauthorized unless current_user.try(:admin?)
+  end
+
   def authenticate_user!
     raise Unauthorized unless logged_in?
   end

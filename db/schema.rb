@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622152636) do
+ActiveRecord::Schema.define(:version => 20110623100914) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110622152636) do
     t.integer  "intentions_count"
     t.string   "username"
     t.string   "email"
+    t.boolean  "admin"
   end
 
 end

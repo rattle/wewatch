@@ -13,7 +13,7 @@ class Broadcast < ActiveRecord::Base
 
     has_attached_file :image, :styles => { :thumb => "156x86", :medium => "362x204" }, :path => "public/system/:attachment/:id/:style.jpg", :url => "/system/:attachment/:id/:style.jpg"
 
-    before_save :set_significance
+    before_save :set_significance, :set_duration
 
     attr_accessor :watching, :watching_id
 
@@ -101,6 +101,10 @@ class Broadcast < ActiveRecord::Base
    end
 
    private
+
+   def set_duration
+     self.duration = self.end - self.start
+   end
 
    def set_significance
 
