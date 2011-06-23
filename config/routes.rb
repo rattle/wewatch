@@ -1,13 +1,17 @@
 Appointment::Application.routes.draw do
 
+
   get "pages/about"
 
-  resources :intentions
-  resource :today, :controller => :today
-  resources :broadcasts
-  resources :users
   resources :channels
-  resource :settings
+  resources :broadcasts
+  resource :today, :controller => :today, :only => :show
+
+
+  resources :users, :only => [:show]
+  resources :followings, :only => [:create, :destroy]
+  resources :intentions, :only => [:new, :create, :destroy, :watchers]
+  resource :settings, :only => [:show]
 
   #resources :on, :constraints => {:id => /[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/}, :as => :day, :controller => :days, :only => :show
 

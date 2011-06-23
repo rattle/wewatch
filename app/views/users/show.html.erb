@@ -1,5 +1,20 @@
 <h1><%= @user.username %></h1>
 
+<% if current_user %>
+  <% friendship = current_user.following?(@user)%>
+  <% if friendship %>
+    You are following this <%= @user.username %>
+    <%= button_to "Unfollow", following_path(friendship), {:method => :delete} %>
+  <% else %>
+    <%= form_for Friendship.new, :url => followings_path do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :friend_id, :value => @user.id %>
+      <%= f.submit "Follow" %>
+    <% end %>
+  <% end %>
+
+<% end %>
+
 <h2>...has been watching:</h2>
 
 <% @user.recent_intentions.each do |intention| %>
@@ -8,6 +23,5 @@
     <%= link_to intention.broadcast.title, intention.broadcast %>
     <%= intention.broadcast.start.to_s(:long) %>, <%= intention.broadcast.channel.name %>
     <%= (tag("br") + intention.comment).html_safe unless intention.comment.blank? %>
-
   </p>
 <% end %>
