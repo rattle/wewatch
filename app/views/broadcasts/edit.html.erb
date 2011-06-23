@@ -5,46 +5,10 @@
 
 <%= form_for @broadcast do |f| %>
 
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :channel_id %>
-    <%= f.collection_select :channel_id, @channels, :id, :name %>
-  </p>
-
-  <p>
-    <%= f.label :start %>
-    <%= f.datetime_select :start %>
-  </p>
-
-  <p>
-    <%= f.label :end %>
-    <%= f.datetime_select :end %>
-  </p>
-
-  <p>
-    <%= f.label :link %>
-    <%= f.text_field :link %>
-  </p>
-
-  <p>
-    <%= f.label :is_repeat, "Repeat?" %>
-    <%= f.check_box :is_repeat %>
-
-    <%= f.label :is_film, "Film?" %>
-    <%= f.check_box :is_film %>
-
-  </p>
-
-
-  <p>
-    <%= f.label :synopsis %><br>
-    <%= f.text_area :synopsis %>
-  </p>
+  <%= render :partial => "fields", :locals => {:f => f, :channels => @channels} %>
 
   <%= f.submit "Save" %>
 
 <% end %>
+
+<%= button_to "Delete", broadcast_path(@broadcast), {:method => :delete} %>

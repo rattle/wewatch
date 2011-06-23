@@ -1,0 +1,10 @@
+<h1>Add Broadcast</h1>
+
+<%= form_for @broadcast do |f| %>
+
+  <%= render :partial => "fields", :locals => {:f => f} %>
+
+
+  <%= f.submit "Save" %>
+
+<% end %>
