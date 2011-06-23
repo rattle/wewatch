@@ -3,7 +3,7 @@ require 'open-uri'
 class Broadcast < ActiveRecord::Base
 
     belongs_to :channel
-    has_many :intentions
+    has_many :intentions, :dependent => :destroy
 
     validates_presence_of :channel
 

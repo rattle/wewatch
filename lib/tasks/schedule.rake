@@ -111,49 +111,52 @@ namespace "schedules" do
 
     Channel.find_each(:conditions => "xml_url IS NOT NULL") do |channel|
 
-      url = channel.xml_url
+      if !channel.xml_url.blank?
 
-      begin
+        url = channel.xml_url
 
-        file = open(url)
-        doc = Hpricot.XML( file )
-        broadcasts = doc.search("//schedule/day/broadcasts/broadcast")
+        begin
 
-        if broadcasts.size > 0
+          file = open(url)
+          doc = Hpricot.XML( file )
+          broadcasts = doc.search("//schedule/day/broadcasts/broadcast")
 
-          broadcasts.each do |broadcast|
+          if broadcasts.size > 0
 
-            starttime = DateTime.parse(broadcast.at('start').inner_html)
-            endtime = DateTime.parse(broadcast.at('end').inner_html)
-            link = BBC_URL + "/programmes/" + broadcast.at('programme/pid').inner_html
+            broadcasts.each do |broadcast|
 
-            b = Broadcast.find_by_channel_id_and_link(channel.id, link)
+              starttime = DateTime.parse(broadcast.at('start').inner_html)
+              endtime = DateTime.parse(broadcast.at('end').inner_html)
+              link = BBC_URL + "/programmes/" + broadcast.at('programme/pid').inner_html
 
-            unless b && b.start == starttime && b.end == endtime
-              b = Broadcast.new
+              b = Broadcast.find_by_channel_id_and_link(channel.id, link)
+
+              unless b && b.start == starttime && b.end == endtime
+                b = Broadcast.new
+              end
+
+              b.channel = channel
+              b.start = starttime
+              b.end =  endtime
+              b.is_repeat = broadcast['is_repeat']
+              b.synopsis = broadcast.at('programme/short_synopsis').inner_html
+              b.link = link
+
+              b.title = broadcast.at('programme/display_titles/title').inner_html
+              b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
+              b.save
+
+              b.image_url = "http://www.bbc.co.uk/iplayer/images/episode/" + broadcast.at('programme/pid').inner_html + "_512_288.jpg"
+
+              b.fetch_programme_info
+              b.save_image
+
             end
-
-            b.channel = channel
-            b.start = starttime
-            b.end =  endtime
-            b.is_repeat = broadcast['is_repeat']
-            b.synopsis = broadcast.at('programme/short_synopsis').inner_html
-            b.link = link
-
-            b.title = broadcast.at('programme/display_titles/title').inner_html
-            b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
-            b.save
-
-            b.image_url = "http://www.bbc.co.uk/iplayer/images/episode/" + broadcast.at('programme/pid').inner_html + "_512_288.jpg"
-
-            b.fetch_programme_info
-            b.save_image
-
           end
+
         end
 
       end
-
     end
 
 

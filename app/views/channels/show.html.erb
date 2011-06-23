@@ -1,0 +1,5 @@
+<h1><%= @channel.name %></h1>
+
+<%= link_to "Edit", edit_channel_path(@channel) %>
+
+<%= button_to "Delete", channel_path(@channel), {:method => :delete} %>

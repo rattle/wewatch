@@ -6,7 +6,7 @@ Appointment::Application.routes.draw do
   resource :today, :controller => :today
   resources :broadcasts
   resources :users
-
+  resources :channels
   resource :settings
 
   #resources :on, :constraints => {:id => /[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/}, :as => :day, :controller => :days, :only => :show

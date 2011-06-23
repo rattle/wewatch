@@ -1,5 +1,7 @@
 class Channel < ActiveRecord::Base
-    
-    has_many :broadcasts
-    
+
+  validates_presence_of :name
+
+  has_many :broadcasts, :dependent => :destroy
+
 end
