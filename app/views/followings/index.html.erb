@@ -1,0 +1,7 @@
+<h1><%= @user.username %> is following...</h1>
+
+<ul>
+  <% @user.friendships.limit(100).each do |following| %>
+    <li><%= link_to following.friend.username, user_path(following.friend.username) %></li>
+  <% end %>
+</ul>

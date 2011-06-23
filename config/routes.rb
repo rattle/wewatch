@@ -8,8 +8,10 @@ Appointment::Application.routes.draw do
   resource :today, :controller => :today, :only => :show
 
 
-  resources :users, :only => [:show]
-  resources :followings, :only => [:create, :destroy]
+  resources :users, :only => [:show], :shallow => true do
+    resources :followings, :only => [:index, :create, :destroy]
+  end
+#  resources :followings, :only => [:create, :destroy]
   resources :intentions, :only => [:new, :create, :destroy, :watchers]
   resource :settings, :only => [:show]
 
