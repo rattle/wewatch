@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="/stylesheets/smallerscreen.css" media="only screen and (max-width: 1023px)" />
   <link rel="stylesheet" href="/stylesheets/mobile.css" media="handheld, only screen and (max-width: 767px)" />
 
-  <link rel="stylesheet" href="/stylesheets/site.css" type="text/css" media="screen" />
+  <%= stylesheet_link_tag 'site' %>
   <link rel="stylesheet" href="/stylesheets/jqModal.css" type="text/css" media="screen" />
   <!-- /end stylesheets -->
+
+
 
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag 'jqModal.js' %>
@@ -52,7 +54,7 @@
         <% if !signed_in?  %>
           <p><a href="/auth/twitter">Sign in with Twitter</a></p>
         <% else %>
-          <p>Hello, <strong><%= link_to current_user.username, username_path(current_user) %></strong>. <%= link_to "Sign Out", logout_path %></p>
+          <p>Hello, <strong><%= link_to current_user.username, username_path(current_user) %></strong>. <%= link_to "Sign Out", logout_path %> -  <%= link_to "Account Settings", settings_path %></p>
         <% end  %>
 
         <% unless @processing %>

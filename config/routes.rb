@@ -7,6 +7,8 @@ Appointment::Application.routes.draw do
   resources :broadcasts
   resources :users
 
+  resource :settings
+
   #resources :on, :constraints => {:id => /[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/}, :as => :day, :controller => :days, :only => :show
 
   match ':year/:month/:day', :to => 'days#show', :year => /[0-9][0-9][0-9][0-9]/, :month => /[0-9][0-9]/, :day => /[0-9][0-9]/

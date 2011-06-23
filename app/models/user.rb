@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  validates_presence_of :username
+  validates_uniqueness_of :username
+
+  accepts_nested_attributes_for :authorizations
+
+  attr_readonly :username
 
   def recent_intentions
     intentions.joins(:broadcast).includes(:broadcast => :channel).order("broadcasts.start DESC").limit(10)

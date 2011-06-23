@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622110731) do
+ActiveRecord::Schema.define(:version => 20110622152636) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20110622110731) do
     t.datetime "updated_at"
     t.integer  "intentions_count"
     t.string   "username"
+    t.string   "email"
   end
 
 end

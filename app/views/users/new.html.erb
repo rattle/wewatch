@@ -1,0 +1,32 @@
+
+<h1>Complete your registration</h1>
+
+<%= form_for @user do |f| %>
+
+<p>
+  <%= f.label :username, "username" %>
+  <%= f.text_field :username %>
+  (note: you can't change this later)
+</p>
+
+<p>
+  <%= f.label :name, "Full name" %>
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :email, "e-mail address" %>
+  <%= f.text_field :email %>
+  (we won't spam you, promise.)
+</p>
+
+  <%= f.fields_for :authorizations do |a| %>
+    <%= a.hidden_field :oauth_token %>
+    <%= a.hidden_field :oauth_secret %>
+    <%= a.hidden_field :uid %>
+    <%= a.hidden_field :provider %>
+  <% end %>
+
+  <%= f.submit "Sign up" %>
+
+<% end %>

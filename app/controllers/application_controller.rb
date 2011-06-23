@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
     redirect_to "/auth/twitter" unless logged_in?
   end
 
+  def authenticate_user!
+    raise Unauthorized unless logged_in?
+  end
 
   protected
   def get_date

@@ -1,0 +1,18 @@
+<h1>Edit Settings</h1>
+
+
+<%= form_for current_user, :url => username_path(current_user) do |f| %>
+
+  <p>
+    <%= f.label :name, "Full name" %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :email, "e-mail address" %>
+    <%= f.text_field :email %>
+  </p>
+
+  <%= f.submit "Save" %>
+
+<% end %>
