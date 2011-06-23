@@ -1,6 +1,6 @@
 <h1><%= @user.username %></h1>
 
-<% if current_user %>
+<% if current_user && @user != current_user %>
   <% friendship = current_user.following?(@user)%>
   <% if friendship %>
     You are following this <%= @user.username %>
