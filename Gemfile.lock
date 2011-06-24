@@ -33,6 +33,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    crack (0.1.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     faraday (0.6.1)
@@ -43,6 +44,8 @@ GEM
       faraday (~> 0.6.0)
     hashie (1.0.0)
     hpricot (0.8.4)
+    httparty (0.7.8)
+      crack (= 0.1.8)
     i18n (0.4.2)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -150,6 +153,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth (>= 4.1.1)
   hpricot
+  httparty
   mysql
   nokogiri
   omniauth

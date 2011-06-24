@@ -18,6 +18,7 @@ gem 'hpricot'
 gem 'twitter'
 gem 'omniauth'
 gem 'paperclip', "~> 2.3"
+gem 'httparty'
 
 # To use debugger
 # gem 'ruby-debug'
