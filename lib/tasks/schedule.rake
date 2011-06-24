@@ -92,7 +92,10 @@ namespace "schedules" do
           b.link = link
           b.title = title
           b.is_film = is_film
-          b.save
+
+          if b.watchable?
+            b.save
+          end
 
         end
 
@@ -146,7 +149,7 @@ namespace "schedules" do
               b.subtitle = broadcast.at('programme/display_titles/subtitle').inner_html if broadcast.at('programme/display_titles/subtitle')
               b.image_url = "http://www.bbc.co.uk/iplayer/images/episode/" + broadcast.at('programme/pid').inner_html + "_512_288.jpg"
 
-              if b.significant?
+              if b.watchable?
                 b.save
                 b.fetch_programme_info
                 b.save_image
