@@ -5,7 +5,7 @@ class Broadcast < ActiveRecord::Base
     belongs_to :channel
     has_many :intentions, :dependent => :destroy
 
-    validates_presence_of :channel
+    validates_presence_of :channel, :start, :end
 
     scope :significant, :conditions => {:significant => true}
     scope :non_repeat, :conditions => {:is_repeat => false}
@@ -13,9 +13,10 @@ class Broadcast < ActiveRecord::Base
 
     has_attached_file :image, :styles => { :thumb => "156x86", :medium => "362x204" }, :path => "public/system/:attachment/:id/:style.jpg", :url => "/system/:attachment/:id/:style.jpg"
 
-    before_save :set_significance, :set_duration
+    before_validation
+    before_save :set_duration, :set_significance
 
-    attr_accessor :watching, :watching_id
+    attr_accessor :watching, :watching_id, :significant
 
     def self.watchable
       significant.non_repeat.order(:start)
@@ -100,6 +101,21 @@ class Broadcast < ActiveRecord::Base
      end
    end
 
+   def significant?
+     insignificant_titles = [/.*News.*/, /.*Weather.*/, /.*EastEnders.*/, /The National Lottery.*/, /World Championship Snooker.*/, /Look North.*/, "Hollyoaks", "4thought.tv", "The One Show", "Eggheads"]
+
+     self.significant = true
+     if title?
+       insignificant_titles.each do |insignificant_title|
+         if title.match(insignificant_title)
+           self.significant = false
+         end
+       end
+     end
+
+     return self.significant
+   end
+
    private
 
    def set_duration
@@ -107,16 +123,8 @@ class Broadcast < ActiveRecord::Base
    end
 
    def set_significance
-
-     insignificant_titles = [/.*News.*/, /.*Weather.*/, /.*EastEnders.*/, /The National Lottery.*/, /World Championship Snooker.*/, /Look North.*/, "Hollyoaks", "4thought.tv", "The One Show", "Eggheads"]
-
-     self.significant = true
-     insignificant_titles.each do |insignificant_title|
-       if title.match(insignificant_title)
-         self.significant = false
-       end
-     end
-
+     write_attribute(:significant, significant?)
+     return true
    end
 
 end
