@@ -3,7 +3,7 @@
 
   <%= image_tag(@broadcast.image.url(:medium)) if @broadcast.image_file_name %>
 
-<%= form_for @broadcast do |f| %>
+<%= form_for @broadcast, :html => { :multipart => true } do |f| %>
 
   <%= render :partial => "fields", :locals => {:f => f, :channels => @channels} %>
 
@@ -11,4 +11,4 @@
 
 <% end %>
 
-<%= button_to "Delete", broadcast_path(@broadcast), {:method => :delete} %>
+<%= button_to "Delete", broadcast_path(@broadcast), {:method => :delete, :class => :delete} %>
