@@ -25,6 +25,14 @@ class Broadcast < ActiveRecord::Base
       significant.non_repeat.order(:start)
     end
 
+    def watchable
+      significant? && is_repeat == false && evening?
+    end
+
+    def evening
+      start && start.hour >= 18
+    end
+
     def as_json(options={})
       json = {:id => id, :title => title, :start => start, :end => self.end, :duration => duration, :description => synopsis, :watchers => intentions_count.to_i, :channel => {:name => channel.name}, :link => link, :film => is_film}
       json[:subtitle] = subtitle unless subtitle.blank?
@@ -108,10 +116,6 @@ class Broadcast < ActiveRecord::Base
      raise NoMethodError, "You can't set this directly."
    end
 
-   def significant?
-     significant
-   end
-
    def significant
      insignificant_titles = [/.*News.*/, /.*Weather.*/, /.*EastEnders.*/, /The National Lottery.*/, /World Championship Snooker.*/, /Look North.*/, "Hollyoaks", "4thought.tv", "The One Show", "Eggheads"]
 
@@ -126,6 +130,10 @@ class Broadcast < ActiveRecord::Base
 
      significant
    end
+
+   alias :watchable? :watchable
+   alias :evening? :evening
+   alias :significant? :significant
 
    private
 
