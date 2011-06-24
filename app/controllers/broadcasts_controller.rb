@@ -1,7 +1,15 @@
 class BroadcastsController < ApplicationController
 
   before_filter :authenticate_admin!, :except => :show
-  before_filter :find_broadcast, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_broadcast, :only => [:edit, :update, :destroy]
+
+  respond_to :html, :json
+
+
+  def show
+    @broadcast = Broadcast.find(params[:id], :include => :intentions)
+    respond_with @broadcast, :include => [:intentions]
+  end
 
   def new
     @broadcast = Broadcast.new

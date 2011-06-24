@@ -55,6 +55,14 @@ class Broadcast < ActiveRecord::Base
         json[:watching_id] = watching_id
       end
 
+      if options[:include] && options[:include].include?(:intentions)
+        hash = []
+        intentions.each do |i|
+          hash << {:id => i.id, :comment => i.comment, :user => {:username => i.user.username}}
+        end
+        json[:intentions] = hash
+      end
+
       json[:friends_watching] = w_json unless w_json.size == 0
       json
     end
