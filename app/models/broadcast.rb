@@ -16,7 +16,10 @@ class Broadcast < ActiveRecord::Base
     before_validation
     before_save :set_duration, :set_significance
 
-    attr_accessor :watching, :watching_id, :significant
+    attr_protected :significant
+
+    attr_accessor :watching, :watching_id
+   # attr_reader :significant
 
     def self.watchable
       significant.non_repeat.order(:start)
@@ -101,19 +104,27 @@ class Broadcast < ActiveRecord::Base
      end
    end
 
+   def significant=(significant)
+     raise NoMethodError, "You can't set this directly."
+   end
+
    def significant?
+     significant
+   end
+
+   def significant
      insignificant_titles = [/.*News.*/, /.*Weather.*/, /.*EastEnders.*/, /The National Lottery.*/, /World Championship Snooker.*/, /Look North.*/, "Hollyoaks", "4thought.tv", "The One Show", "Eggheads"]
 
-     self.significant = true
+     significant = true
      if title?
        insignificant_titles.each do |insignificant_title|
          if title.match(insignificant_title)
-           self.significant = false
+           significant = false
          end
        end
      end
 
-     return self.significant
+     significant
    end
 
    private
@@ -123,7 +134,7 @@ class Broadcast < ActiveRecord::Base
    end
 
    def set_significance
-     write_attribute(:significant, significant?)
+     write_attribute(:significant, significant)
      return true
    end
 
