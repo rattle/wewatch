@@ -58,7 +58,7 @@ class Broadcast < ActiveRecord::Base
       if options[:include] && options[:include].include?(:intentions)
         hash = []
         intentions.each do |i|
-          hash << {:id => i.id, :comment => i.comment, :user => {:username => i.user.username}}
+          hash << {:id => i.id, :comment => i.comment, :user => {:username => i.user.username}, :created_at => i.created_at}
         end
         json[:intentions] = hash
       end
