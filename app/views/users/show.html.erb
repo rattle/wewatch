@@ -6,7 +6,7 @@
     You are following this <%= @user.username %>
     <%= button_to "Unfollow", following_path(friendship), {:method => :delete} %>
   <% else %>
-    <%= form_for Friendship.new, :url => user_followings_path(current_user.username) do |f| %>
+    <%= form_for Friendship.new, :url => user_following_index_path(current_user.username) do |f| %>
       <%= f.hidden_field :friend_id, :value => @user.id %>
       <%= f.submit "Follow" %>
     <% end %>
