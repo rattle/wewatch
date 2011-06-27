@@ -9,7 +9,7 @@ Appointment::Application.routes.draw do
 
 
   resources :users, :only => [:show], :shallow => true do
-    resources :followings, :only => [:index, :create, :destroy]
+    resources :following, :only => [:index, :create, :destroy], :controller => :followings
   end
 #  resources :followings, :only => [:create, :destroy]
   resources :intentions, :only => [:new, :create, :destroy, :watchers]
